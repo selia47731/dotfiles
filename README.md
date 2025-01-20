@@ -40,7 +40,7 @@ dvm install install 2.1.6
 wget http://www.lua.org/ftp/lua-5.1.5.tar.gz
 tar -xvf lua-5.1.5.tar.gz
 cd lua-5.1.5
--- change Makefile `INSTALL_TOP= /usr/local` to `INSTALL_TOP= /usr/local/lua-5.1
+-- change Makefile `INSTALL_TOP= /usr/local` to `INSTALL_TOP= /usr/local/lua-5.1`
 make macosx
 sudo make install
 ```
