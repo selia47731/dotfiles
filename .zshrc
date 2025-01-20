@@ -52,6 +52,23 @@ export PATH="/opt/homebrew/opt/php@8.2/sbin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/php@8.2/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/php@8.2/include"
 
+
+
+# ruby(rbenv) config
+[[ -d ~/.rbenv  ]] && \
+  export PATH=${HOME}/.rbenv/bin:${PATH} && \
+  eval "$(rbenv init -)"
+
+
+# perl(cpan) config
+PERL_LOCAL_BASE="$HOME/.local/perl5"
+export PATH="$PERL_LOCAL_BASE/bin:$PATH"
+export PERL5LIB="$PERL_LOCAL_BASE/lib/perl5"
+export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_BASE"
+export PERL_MB_OPT="--install_base \"$PERL_LOCAL_BASE\""
+export PERL_MM_OPT="INSTALL_BASE=$PERL_LOCAL_BASE"
+
+
 # lua5.1 config
 export PATH="/usr/local/lua-5.1/bin:$PATH"
 export LUA_PATH="/usr/local/lua-5.1/?.lua;/usr/local/lua-5.1/?/init.lua;$LUA_PATH"
@@ -60,10 +77,21 @@ export LUA_CPATH="/usr/local/lua-5.1/lib/lua/5.1/?.so;/usr/local/lua-5.1/lib/lua
 # lua5.4 config
 # export LUA_CPATH="/opt/homebrew/lib/lua/5.4/?.so;"
 
-autoload -Uz compinit && compinit
+
+# deno(dvm) config
+export DVM_DIR="$HOME/.dvm"
+export PATH="$DVM_DIR/bin:$PATH"
+
+
+# latexmk config
+export PATH="/usr/local/texlive/2024/bin/universal-darwin:$PATH"
+
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '$HOME/gorilla-cli/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/gorilla-cli/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '$HOME/gorilla-cli/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/gorilla-cli/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+autoload -Uz compinit && compinit
