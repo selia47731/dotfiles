@@ -13,7 +13,7 @@ brew tap homebrew/bundle
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yuu-komesu/dotfiles.git
+git clone https://github.com/ie42-yk/dotfiles.git
 ```
 
 2. Install brew packages:
