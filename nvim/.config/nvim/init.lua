@@ -2,6 +2,7 @@ vim.g.maplocalleader = ","
 
 
 -- nvim text settings
+vim.opt.modifiable = true
 vim.opt.wrap = false
 vim.opt.matchpairs:append({ '（:）', '「:」', '『:』', '【:】', '［:］', '＜:＞' })
 vim.opt.scrolloff = 3
@@ -9,13 +10,17 @@ vim.opt.sidescrolloff = 10
 vim.opt.foldmethod = 'marker'
 vim.opt.foldmarker = "'!!!>', '<!!!'"
 vim.opt.list = true
+vim.opt.ignorecase = true
 vim.opt.listchars:append({ extends = '>', precedes = '<' })
 
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.laststatus = 3
+
+-- nvim keymap settings
+vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
 
 -- nvim IME settings
@@ -42,7 +47,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   command = "set filetype=agda",
 })
 
-
 -- lazy.nvim settings
 require("config.lazy")
 
@@ -54,3 +58,5 @@ vim.opt.termguicolors = true
 vim.opt.winblend = 10
 vim.opt.pumblend = 7
 vim.cmd('highlight Normal guibg=NONE')
+
+-- nvim additional keymap settings
