@@ -10,7 +10,7 @@ return {
 		vim.api.nvim_set_keymap("n", "<leader>jr", ":Jupytext rmd<CR>", { noremap = true, silent = true })
 
 		vim.api.nvim_create_autocmd({"BufWritePost"}, {
-			pattern = {"*.ipynb", "*.py"},
+			pattern = {"*.ipynb"},
 			callback = function()
 				vim.cmd("JupytextSync")
 			end,
@@ -24,4 +24,3 @@ return {
 		end, {nargs = "?"})
 	end
 }
-

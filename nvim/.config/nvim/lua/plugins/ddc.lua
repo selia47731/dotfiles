@@ -1,35 +1,46 @@
 return {
-  {
-    "Shougo/ddc.vim",
-    dependencies = {
-      "vim-denops/denops.vim",
-      "Shougo/ddc-ui-native",
-      "Shougo/ddc-around",
-      "Shougo/ddc-matcher_head",
-      "Shougo/ddc-sorter_rank",
-      "Shougo/ddc-source-copilot",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      vim.cmd([[
-        call ddc#custom#patch_global('ui', 'native')
-        call ddc#custom#patch_global('sources', ['copilot','around'])
-        call ddc#custom#patch_global('sourceOptions', {
-	  \ '_': {
-	  \   'matchers': ['matcher_head'],
-	  \   'sorters': ['sorter_rank'],
-          \ },
-	  \ 'around': {
-	  \   'mark': 'around'
-	  \ },
-    \ 'copilot': {
-    \   'mark': 'Copilot',
-    \   'minAutoCompleteLength': 0,
-    \   'isVolatile': v:true
-    \ },
-	  \ })
-        call ddc#enable()
-      ]])
-    end,
+  "Shougo/ddc.vim",
+  after = "copilot.lua",
+  dependencies = {
+    "vim-denops/denops.vim",
+    "Shougo/ddc-ui-native",
+    "Shougo/ddc-source-around",
+    "Shougo/ddc-source-lsp",
+    "Shougo/ddc-filter-matcher_head",
+    "Shougo/ddc-filter-sorter_rank",
+    "nvim-treesitter/nvim-treesitter",
+    "neovim/nvim-lspconfig",
   },
+  config = function()
+    local capabilities = require("ddc_source_lsp").make_client_capabilities()
+    require("lspconfig").denols.setup({
+      capabilities = capabilities,
+    })
+    vim.cmd([[
+      call ddc#custom#patch_global('ui', 'native')
+      call ddc#custom#patch_global('sources', ['lsp', 'around'])
+      call ddc#custom#patch_global('sourceOptions', #{
+        \ _: #{
+        \   matchers: ['matcher_head'],
+        \   sorters: ['sorter_rank'],
+        \ },
+        \ lsp: #{
+        \   mark: 'lsp',
+        \   forceCompletionPattern: '\.\w*|:\w*|->\w*',
+        \ },
+        \ around: #{ mark: 'around' },
+        \ })
+      call ddc#custom#patch_global('sourceParams', #{
+        \ lsp: #{
+        \   snippetEngine: denops#callback#register({
+        \     body -> vsnip#anonymous(body)
+        \   }),
+        \   enableResolveItem: v:true,
+        \   enableAdditionalTextEdits: v:true,
+        \ },
+        \ around: #{ maxSize: 500 },
+        \ })
+      call ddc#enable()
+    ]])
+  end,
 }
