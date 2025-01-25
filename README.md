@@ -29,13 +29,7 @@ stow -v nvim
 stow -v tmux
 ```
 
-4. Install deno(dvm):
-```bash
-brew install dvm
-dvm install install 2.1.6
-```
-
-5. Install lua-5.1.5:
+4. Install lua-5.1.5:
 ```bash
 wget http://www.lua.org/ftp/lua-5.1.5.tar.gz
 tar -xvf lua-5.1.5.tar.gz
