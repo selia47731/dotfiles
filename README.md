@@ -79,3 +79,7 @@ variables = {
     LUA_LIBDIR = "/usr/local/lua-5.1/lib"
 }
 ```
+
+5. Install deno(dvm):
+```bash
+curl -fsSL https://dvm.deno.dev | sh
