@@ -11,8 +11,8 @@ fi
 
 # alias config
 alias vi='/opt/homebrew/bin/nvim'
-alias vizrc='nvim ~/.zshrc'
-alias szrc='source ~/.zshrc'
+alias vz='nvim ~/.zshrc'
+alias sz='source ~/.zshrc'
 
 # Homebrew config
 export PATH="/opt/homebrew/sbin:$PATH"
@@ -20,8 +20,10 @@ export LD_LIBRARY_PATH="/opt/homebrew/lib:$LD_LIBRARY_PATH"
 export LDFLAGS="-L/opt/homebrew/lib"
 export CFLAFGS="-I/opt/homebrew/include"
 
-alias brew_dump='brew bundle dump --global --no-vscode -f'
-alias brew_bundle='brew bundle --global'
+alias brew_dump-l='brew bundle dump --no-vscode -f'
+alias brew_dump-g='brew bundle dump --global --no-vscode -f'
+alias brew_bundle-l='brew bundle --file Brewfile'
+alias brew_bundle-g='brew bundle --global'
 
 # Go config
 export GOPATH=$HOME/src/go
@@ -81,7 +83,6 @@ export LUA_CPATH="/usr/local/lua-5.1/lib/lua/5.1/?.so;/usr/local/lua-5.1/lib/lua
 # deno(dvm) config
 export DVM_DIR="$HOME/.dvm"
 export PATH="$DVM_DIR/bin:$PATH"
-
 
 # latexmk config
 export PATH="/usr/local/texlive/2024/bin/universal-darwin:$PATH"
