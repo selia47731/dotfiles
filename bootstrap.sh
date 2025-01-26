@@ -76,11 +76,11 @@ rocks_trees = {
    }
 }
 variables = {
-   LUA = "/usr/local/lua-5.1/bin/lua",
-   LUA_BINDIR = "/usr/local/lua-5.1/bin",
-   LUA_DIR = "/usr/local/lua-5.1",
-   LUA_INCDIR = "/usr/local/lua-5.1/include",
-   LUA_LIBDIR = "/usr/local/lua-5.1/lib"
+   LUA = "${INSTALL_DIR}/bin/lua",
+   LUA_BINDIR = "${INSTALL_DIR}/bin",
+   LUA_DIR = "${INSTALL_DIR}",
+   LUA_INCDIR = "${INSTALL_DIR}/include",
+   LUA_LIBDIR = "${INSTALL_DIR}/lib"
 }
 EOF
 
