@@ -15,9 +15,9 @@ alias vz='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'
 alias ga='git add'
 alias gc='git commit'
-alias gp='git push'
+alias gps='git push'
 alias gpl='git pull'
-alias gs='git status'
+alias gst='git status'
 
 
 # Homebrew config
