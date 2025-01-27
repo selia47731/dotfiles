@@ -8,8 +8,8 @@ Make sure you have installed the following tools:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install git
-
-# Installation
+```
+## Installation
 1. Clone this repository;
 ```bash
 git clone https://github.com/ie42-yk/dotfiles.git
