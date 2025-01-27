@@ -6,6 +6,7 @@ return {
     "Shougo/ddc-ui-native",
     "Shougo/ddc-source-around",
     "Shougo/ddc-source-lsp",
+    "Shougo/ddc-buffer",
     "Shougo/ddc-filter-matcher_head",
     "Shougo/ddc-filter-sorter_rank",
     "nvim-treesitter/nvim-treesitter",
@@ -18,7 +19,7 @@ return {
     })
     vim.cmd([[
       call ddc#custom#patch_global('ui', 'native')
-      call ddc#custom#patch_global('sources', ['lsp', 'around'])
+      call ddc#custom#patch_global('sources', ['lsp', 'around', 'buffer'])
       call ddc#custom#patch_global('sourceOptions', #{
         \ _: #{
         \   matchers: ['matcher_head'],
@@ -29,6 +30,7 @@ return {
         \   forceCompletionPattern: '\.\w*|:\w*|->\w*',
         \ },
         \ around: #{ mark: 'around' },
+        \ buffer: #{ mark: 'buffer' },
         \ })
       call ddc#custom#patch_global('sourceParams', #{
         \ lsp: #{
@@ -39,7 +41,13 @@ return {
         \   enableAdditionalTextEdits: v:true,
         \ },
         \ around: #{ maxSize: 500 },
+        \ buffer: #{
+        \ requireSameFiletype: v:true,
+        \ limitAltBuf: v:true,
+        \ forceCollect: v:true,
+        \ },
         \ })
+
       call ddc#enable()
     ]])
   end,
