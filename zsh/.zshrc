@@ -13,6 +13,12 @@ fi
 alias vi='/opt/homebrew/bin/nvim'
 alias vz='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gpl='git pull'
+alias gs='git status'
+
 
 # Homebrew config
 export PATH="/opt/homebrew/sbin:$PATH"
