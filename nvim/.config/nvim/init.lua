@@ -18,6 +18,7 @@ vim.opt.autoindent = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.laststatus = 3
+vim.opt.incsearch = true
 
 -- nvim keymap settings
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
@@ -52,7 +53,7 @@ require("config.lazy")
 
 
 -- nvim colorscheme settings
-vim.opt.background = "light"
+vim.opt.background = "dark"
 vim.cmd("colorscheme sakura")
 vim.opt.termguicolors = true
 vim.opt.winblend = 10
