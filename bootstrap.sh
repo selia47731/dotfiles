@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script is for macOS arm64
 
-set -euo pipefail
+set -euxo pipefail
 
 # First ckeck OS and architecture
 if [[ "$(uname -sm)" != "Darwin arm64" ]]; then
