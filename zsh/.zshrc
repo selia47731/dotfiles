@@ -15,7 +15,7 @@ alias vz='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'
 alias ga='git add'
 alias gc='git commit'
-alias gps='git push'
+alias gps='git push origin main'
 alias gpl='git pull'
 alias gst='git status'
 
