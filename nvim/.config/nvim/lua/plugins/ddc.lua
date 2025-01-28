@@ -9,6 +9,7 @@ return {
     "Shougo/ddc-buffer",
     "Shougo/ddc-filter-matcher_head",
     "Shougo/ddc-filter-sorter_rank",
+    "Shougo/ddc-filter-converter_remove_overlap",
     "nvim-treesitter/nvim-treesitter",
     "neovim/nvim-lspconfig",
   },
@@ -24,6 +25,7 @@ return {
         \ _: #{
         \   matchers: ['matcher_head'],
         \   sorters: ['sorter_rank'],
+        \   converters: ['converter_remove_overlap'],
         \ },
         \ lsp: #{
         \   mark: 'lsp',
