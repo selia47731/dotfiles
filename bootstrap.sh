@@ -92,3 +92,23 @@ luarocks install luarocks-build-rust-mlua
 
 # Install dvm(deno version manager)
 curl -fsSL https://dvm.deno.dev | sh
+
+
+# Config macSKK
+SKK_SETTING_DIR="$HOME/Library/Containers/net.mtgto.inputmethod.macSKK/Data/Documents/Setttings"
+SKK_RULES_URL="https://gist.githubusercontent.com/slmnll/5de63180e7259022932adbd7aa6c34a6/raw/13541f1065caccfae9a13b21d756a46ac07000b4/kana-rule.conf"
+
+if [[ ! -d "$SKK_SETTING_DIR" ]]; then
+  mkdir -p "$SKK_SETTING_DIR"
+fi
+curl -fsSL "$SKK_RULES_URL" -o "$SKK_SETTING_DIR/kana-rule.conf"
+
+# Append custom SKK kana rules
+cat <<EOF >> "$SKK_SETTINGS_DIR/kana-rule.conf"
+z/,・
+-,ー
+z.,…
+z1,！
+z_,？
+z^,〜
+EOF
