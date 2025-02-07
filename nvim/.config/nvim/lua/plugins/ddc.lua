@@ -12,6 +12,7 @@ return {
     "Shougo/ddc-filter-converter_remove_overlap",
     "nvim-treesitter/nvim-treesitter",
     "neovim/nvim-lspconfig",
+    "vim-skk/skkeleton",
   },
   config = function()
     local capabilities = require("ddc_source_lsp").make_client_capabilities()
@@ -20,7 +21,7 @@ return {
     })
     vim.cmd([[
       call ddc#custom#patch_global('ui', 'native')
-      call ddc#custom#patch_global('sources', ['lsp', 'around', 'buffer'])
+      call ddc#custom#patch_global('sources', ['lsp', 'around', 'buffer', 'skkeleton'])
       call ddc#custom#patch_global('sourceOptions', #{
         \ _: #{
         \   matchers: ['matcher_head'],
@@ -33,6 +34,14 @@ return {
         \ },
         \ around: #{ mark: 'around' },
         \ buffer: #{ mark: 'buffer' },
+        \ skkeleton: #{
+        \   mark: 'skkeleton',
+        \   matchers: [],
+        \   sorters: [],
+        \   converters: [],
+        \   isVolatile: v:true,
+        \   minAutoCompleteLength: 1,
+        \ },
         \ })
       call ddc#custom#patch_global('sourceParams', #{
         \ lsp: #{
