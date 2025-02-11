@@ -10,6 +10,7 @@ if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
 fi
 
 # alias config
+alias cde='cd `!$`'
 alias vi='/opt/homebrew/bin/nvim'
 alias vz='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'
