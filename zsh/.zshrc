@@ -41,7 +41,8 @@ export CPPFLAGS="-I/opt/homebrew/opt/libomp/include"
 
 
 # Python config
-alias python='python3'
+alias python='python3.11'
+# export PIPX_DEFAULT_PYTHON=/opt/homebrew/opt/python@3.12/libexec/bin/python # pipx config
 
 # c compiler config
 alias gcc='gcc-14'
