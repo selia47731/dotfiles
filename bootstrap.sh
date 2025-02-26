@@ -108,8 +108,8 @@ curl -fsSL "$SKK_RULES_URL" -o "$SKK_SETTING_DIR/kana-rule.conf"
 cat <<EOF >> "$SKK_SETTINGS_DIR/kana-rule.conf"
 z/,・
 -,ー
-z.,…
-z1,！
-z_,？
-z^,〜
+>,…
+!,！
+?,？
+^,〜
 EOF
