@@ -15,7 +15,7 @@ This setup is strictly for macOS (Apple Silicon, arm64) and will **not work on I
 ## Installation
 1. Clone this repository;
 ```bash
-git clone https://github.com/ie42-yk/dotfiles.git
+git clone https://github.com/selia47731/dotfiles.git
 cd dotfiles
 ```
 

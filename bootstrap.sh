@@ -21,7 +21,7 @@ brew tap homebrew/bundle
 
 
 # Clone the dotfiles repository
-git clone https://github.com/ie42-yk/dotfiles.git
+git clone https://github.com/selia47731/dotfiles.git
 cd dotfiles || exit 1
 
 # Install stow
