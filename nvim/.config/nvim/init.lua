@@ -41,6 +41,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   end,
 })
 
+
 -- nvim agda settings
 vim.api.nvim_create_augroup("filetypedetect", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
@@ -48,9 +49,15 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   command = "set filetype=agda",
 })
 
+-- nvim jupytext settings
+vim.api.nvim_create_augroup("filetypedetect", { clear = true })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.ipynd",
+  command = "set filetype=jupytext",
+})
+
 -- lazy.nvim settings
 require("config.lazy")
-
 
 -- nvim colorscheme settings
 vim.opt.background = "dark"
