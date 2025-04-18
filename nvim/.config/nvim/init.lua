@@ -30,14 +30,14 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
   group = ime_group,
   pattern = { "/", "?" },
   callback = function()
-    vim.fn.system("osascript -e 'tell application \"System Events\" to key code 102'")
+    vim.fn.system("im-select com.apple.keylayout.British")
   end,
 })
 
 vim.api.nvim_create_autocmd("InsertLeave", {
   group = ime_group,
   callback = function()
-    vim.fn.system("osascript -e 'tell application \"System Events\" to key code 102'")
+    vim.fn.system("im-select com.apple.keylayout.British")
   end,
 })
 
