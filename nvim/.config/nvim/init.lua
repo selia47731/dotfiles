@@ -42,6 +42,17 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 })
 
 
+-- nvim scratchpad settings
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "scratchpad.md", "scratchpad.org" },
+  callback =function()
+    vim.wo.wrap = true
+    vim.wo.linebreak = true
+    vim.wo.spell = true
+    vim.wo.spelllang = { "ja" }
+  end,
+})
+
 -- nvim agda settings
 vim.api.nvim_create_augroup("filetypedetect", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
