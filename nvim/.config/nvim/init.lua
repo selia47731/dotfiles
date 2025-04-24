@@ -22,7 +22,7 @@ vim.opt.incsearch = true
 
 -- nvim keymap settings
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap('n', '<leader>y', '"+yy', { noremap = true, silent = true })
 
 -- nvim IME settings
 local ime_group = vim.api.nvim_create_augroup("IME", { clear = false })
