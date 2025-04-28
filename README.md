@@ -13,15 +13,9 @@ Check that `xcode-select -p` returns `/Library/Developer/CommandLineTools`.
 This setup is strictly for macOS (Apple Silicon, arm64) and will **not work on Intel Macs or other platforms**.
 
 ## Installation
-1. Clone this repository;
+Run the bootstrap script;
 ```bash
-git clone https://github.com/selia47731/dotfiles.git
-cd dotfiles
-```
-
-2. Run the bootstrap script;
-```bash
-./bootstrap.sh
+/bin/bash -c "$(curl -fsSL https://https://raw.githubusercontent.com/selia47731/dotfiles/refs/heads/main/bootstrap.sh)"
 ```
 The script will:
 - Check OS & architecture (will exit if not on macOS Apple Silicon)
