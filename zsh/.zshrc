@@ -11,9 +11,11 @@ fi
 
 # alias config
 alias cde='cd `!$`'
-alias vi='/opt/homebrew/bin/nvim'
+alias vi='nvim'
 alias vz='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'
+
+# git alias
 alias ga='git add'
 alias gc='git commit'
 alias gps='git push origin main'
@@ -91,6 +93,13 @@ export LUA_CPATH="/usr/local/lua-5.1/lib/lua/5.1/?.so;/usr/local/lua-5.1/lib/lua
 # deno(dvm) config
 export DVM_DIR="$HOME/.dvm"
 export PATH="$DVM_DIR/bin:$PATH"
+
+
+# zinit config
+source "/opt/homebrew/opt/zinit/zinit.zsh"
+autoload -Uz zinit
+zinit light olets/zsh-abbr
+
 
 # latexmk config
 export PATH="/usr/local/texlive/2024/bin/universal-darwin:$PATH"
