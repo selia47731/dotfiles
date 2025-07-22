@@ -104,7 +104,7 @@ zinit light olets/zsh-abbr
 export VK_ICD_FILENAMES=/opt/homebrew/opt/vulkan-tools/lib/mock_icd/VkICD_mock_icd.json
 
 # latexmk config
-export PATH="/usr/local/texlive/2024/bin/universal-darwin:$PATH"
+export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
 
 
 # The next line updates PATH for the Google Cloud SDK.
