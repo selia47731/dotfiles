@@ -37,7 +37,8 @@
 (column-number-mode)
 
 ;; Mac で日本語入力をするときに、自動的に英数モードに切り替える
-(mac-auto-ascii-mode 1)
+(when (fboundp 'mac-auto-ascii-mode)
+  (mac-auto-ascii-mode 1))
 ;; 括弧を自動的に補完する
 (electric-pair-mode 1)
 ;; 括弧のペアをハイライトする
