@@ -15,10 +15,6 @@ return {
     "vim-skk/skkeleton",
   },
   config = function()
-    local capabilities = require("ddc_source_lsp").make_client_capabilities()
-    require("lspconfig").denols.setup({
-      capabilities = capabilities,
-    })
     vim.cmd([[
       call ddc#custom#patch_global('ui', 'native')
       call ddc#custom#patch_global('sources', ['lsp', 'around', 'buffer', 'skkeleton'])
