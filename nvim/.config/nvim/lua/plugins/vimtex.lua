@@ -1,7 +1,7 @@
 return {
   "lervag/vimtex",
   lazy = false,
-  tag = "v2.15",
+  tag = "v2.16",
   init = function()
     vim.g.vimtex_view_method = 'skim'
     vim.g.vimtex_view_skim_sync = 1
@@ -10,7 +10,7 @@ return {
   end,
   config = function()
     vim.cmd('filetype plugin indent on')
-    vim.cmd('syntax enable')
+    -- vim.cmd('syntax enable')
 
     -- latexmk
     vim.g.vimtex_compiler_latexmk = {
