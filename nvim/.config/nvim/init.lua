@@ -25,21 +25,21 @@ vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>y', '"+yy', { noremap = true, silent = true })
 
 -- nvim IME settings
-local ime_group = vim.api.nvim_create_augroup("IME", { clear = false })
-vim.api.nvim_create_autocmd("CmdlineLeave", {
-  group = ime_group,
-  pattern = { "/", "?" },
-  callback = function()
-    vim.fn.system("im-select com.apple.keylayout.British")
-  end,
-})
+-- local ime_group = vim.api.nvim_create_augroup("IME", { clear = false })
+-- vim.api.nvim_create_autocmd("CmdlineLeave", {
+--   group = ime_group,
+--   pattern = { "/", "?" },
+--   callback = function()
+--     vim.fn.system("im-select com.apple.keylayout.British")
+--   end,
+-- })
 
-vim.api.nvim_create_autocmd("InsertLeave", {
-  group = ime_group,
-  callback = function()
-    vim.fn.system("im-select com.apple.keylayout.British")
-  end,
-})
+-- vim.api.nvim_create_autocmd("InsertLeave", {
+--   group = ime_group,
+--   callback = function()
+--     vim.fn.system("im-select com.apple.keylayout.British")
+--   end,
+-- })
 
 
 -- nvim scratchpad settings
