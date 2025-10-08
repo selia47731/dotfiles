@@ -13,14 +13,22 @@ return {
     require("noice").setup({
       auto_close = true,
       lsp = {
-        enabled = false,
+        enabled = true,
+        progress = { enabled = true },
+        hover = { enabled = true },
+        signature = { enabled = true },
+        message = { enabled = true, view = "notify" },
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+        },
       },
       presets = {
         bottom_search = true,
         command_palette = true,
         long_message_to_split = true,
         inc_rename = false,
-        lsp_doc_border = false,
+        lsp_doc_border = true,
       },
     })
   end,
