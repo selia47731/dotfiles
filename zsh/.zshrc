@@ -109,11 +109,4 @@ export VK_LAYER_PATH=/opt/homebrew/opt/vulkan-profiles/share/vulkan/explicit_lay
 export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/gorilla-cli/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/gorilla-cli/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '$HOME/gorilla-cli/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/gorilla-cli/google-cloud-sdk/completion.zsh.inc'; fi
-
-
 autoload -Uz compinit && compinit
