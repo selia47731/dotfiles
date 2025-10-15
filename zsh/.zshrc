@@ -47,10 +47,8 @@ alias python='python3.11'
 # export PIPX_DEFAULT_PYTHON=/opt/homebrew/opt/python@3.12/libexec/bin/python # pipx config
 
 # c compiler config
-alias gcc='gcc-14'
-alias g++='g++-14'
-export CC=/opt/homebrew/bin/gcc-14
-export CXX=/opt/homebrew/bin/g++-14
+export CC=/opt/homebrew/bin/gcc-15
+export CXX=/opt/homebrew/bin/g++-15
 
 # qt@5 config
 export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
