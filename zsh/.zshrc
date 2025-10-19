@@ -10,7 +10,6 @@ if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
 fi
 
 # alias config
-alias cde='cd !$'
 alias vi='nvim'
 alias vz='nvim ~/.zshrc'
 alias sz='source ~/.zshrc'
@@ -22,6 +21,16 @@ alias gps='git push origin main'
 alias gpl='git pull'
 alias gst='git status'
 
+cde() {
+  local last_cmd=$(fc -ln -1)
+  local -a last_cmd_words=(${(z)last_cmd})
+  local last_arg=${last_cmd_words[-1]}
+  if [[ -d $last_arg ]]; then
+    cd "$last_arg" || return
+  else
+    echo "cde: '$last_arg' is not a directory" >&2
+  fi
+}
 
 # Homebrew config
 export PATH="/opt/homebrew/sbin:$PATH"
