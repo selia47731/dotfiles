@@ -89,8 +89,6 @@ export LUA_CPATH="/usr/local/lua-5.1/lib/lua/5.1/?.so;/usr/local/lua-5.1/lib/lua
 
 
 # deno(dvm) config
-export DVM_DIR="$HOME/.dvm"
-export PATH="$DVM_DIR/bin:$PATH"
 
 
 # zinit config
