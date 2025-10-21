@@ -4,6 +4,7 @@ vim.g.maplocalleader = ","
 -- nvim text settings
 vim.opt.modifiable = true
 vim.opt.wrap = false
+vim.opt.termguicolors = true
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 10
 vim.opt.foldmethod = 'marker'
@@ -69,8 +70,13 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 require("config.lazy")
 
 -- nvim colorscheme settings
+local term_program = vim.env.TERM_PROGRAM
 vim.opt.background = "dark"
-vim.cmd("colorscheme sakura")
+if term_program == "iTerm.app" then
+  vim.cmd("colorscheme sakura")
+elseif term_program == "WezTerm" then
+  vim.cmd("colorscheme cyberdream")
+end
 vim.opt.termguicolors = true
 vim.opt.winblend = 10
 vim.opt.pumblend = 7

@@ -5,9 +5,15 @@ export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME
 # iTerm2 theme
 if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
   export CLICOLOR=1
-  export termguicolors
   export TERM=xterm-256color
 fi
+
+# WezTerm theme
+if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
+  export CLICOLOR=1
+  export LSCOLORS="exfxcxdxbxegedabagacad"
+fi
+
 
 # alias config
 alias vi='nvim'
@@ -50,11 +56,6 @@ export KAGGLE_PROXY=$HOME/.kaggle/kaggle.json
 export LDFLAGS="-L/opt/homebrew/opt/libomp/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libomp/include"
 
-
-# Python config
-alias python='python3.11'
-# export PIPX_DEFAULT_PYTHON=/opt/homebrew/opt/python@3.12/libexec/bin/python # pipx config
-
 # c compiler config
 export CC=/opt/homebrew/bin/gcc-15
 export CXX=/opt/homebrew/bin/g++-15
@@ -95,9 +96,6 @@ export LUA_CPATH="/usr/local/lua-5.1/lib/lua/5.1/?.so;/usr/local/lua-5.1/lib/lua
 
 # lua5.4 config
 # export LUA_CPATH="/opt/homebrew/lib/lua/5.4/?.so;"
-
-
-# deno(dvm) config
 
 
 # zinit config
