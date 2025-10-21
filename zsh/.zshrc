@@ -103,10 +103,6 @@ source "/opt/homebrew/opt/zinit/zinit.zsh"
 autoload -Uz zinit
 zinit light olets/zsh-abbr
 
-# vulkan config
-export VK_ICD_FILENAMES=/opt/homebrew/opt/vulkan-tools/lib/mock_icd/VkICD_mock_icd.json
-export VK_LAYER_PATH=/opt/homebrew/opt/vulkan-extensionlayer/share/vulkan/explicit_layer.d
-export VK_LAYER_PATH=/opt/homebrew/opt/vulkan-profiles/share/vulkan/explicit_layer.d
 
 # latexmk config
 export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
