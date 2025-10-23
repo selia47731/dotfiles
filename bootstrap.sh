@@ -35,6 +35,7 @@ fi
 stow -v zsh
 stow -v nvim
 stow -v tmux
+stow -v wezterm
 stow -v emacs
 
 source ~/.zshrc

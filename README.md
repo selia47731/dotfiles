@@ -21,7 +21,7 @@ The script will:
 - Check OS & architecture (will exit if not on macOS Apple Silicon)
 - Install Homebrew (if not already installed)
 - Install required Homebrew packages
-- Set up symlinks using `stow` (`zsh`, `nvim`, `tmux`)
+- Set up symlinks using `stow` (`zsh`, `nvim`, `tmux`, `wezterm`, `emacs`)
 - Install Lua 5.1.5 and configure luarocks
 - Install Deno using [dvm](https://github.com/justjavac/dvm)
 - Set up `macSKK` for Japanese input(Kana rules included)
