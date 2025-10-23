@@ -41,10 +41,6 @@ return {
       end
     end
 
-    jupytext.setup(vim.tbl_extend('force', opts, {
-      filetype = jupytext.get_filetype,
-    }))
-    vim.treesitter.language.register("python", "jupytext")
 
     vim.api.nvim_create_autocmd("BufNewFile", {
       pattern = "*.ipynb",
