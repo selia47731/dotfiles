@@ -3,6 +3,8 @@ local act = wezterm.action
 
 return {
   keys = {
+    { key = '¥', mods = 'NONE', action = act.SendString("\\" ) },
+
     -- ==== タブ・ウィンドウ ====
     { key = 't', mods = 'CMD', action = act.SpawnTab 'CurrentPaneDomain' },
     { key = 'w', mods = 'CMD', action = act.CloseCurrentTab{ confirm = false } },
