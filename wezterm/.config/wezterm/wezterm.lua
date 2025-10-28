@@ -27,6 +27,8 @@ config.colors = {
 config.show_new_tab_button_in_tab_bar = false
 -- config.show_close_tab_button_in_tabs = false
 
+config.send_composed_key_when_right_alt_is_pressed = false
+config.send_composed_key_when_left_alt_is_pressed = false
 config.disable_default_key_bindings = true
 config.keys = require("keybinds").keys
 config.key_tables = require("keybinds").key_tables
