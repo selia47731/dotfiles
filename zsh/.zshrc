@@ -51,7 +51,6 @@ alias brew_bundle-g='brew bundle --global'
 
 # Go config
 export GOPATH=$HOME/src/go
-export DOTNET_ROOT=$HOME/dotnet
 export KAGGLE_PROXY=$HOME/.kaggle/kaggle.json
 export LDFLAGS="-L/opt/homebrew/opt/libomp/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libomp/include"
