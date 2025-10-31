@@ -97,6 +97,10 @@ export LUA_CPATH="/usr/local/lua-5.1/lib/lua/5.1/?.so;/usr/local/lua-5.1/lib/lua
 # export LUA_CPATH="/opt/homebrew/lib/lua/5.4/?.so;"
 
 
+# mysql config
+export PATH="/usr/local/mysql-8.4.7-macos15-arm64/bin:$PATH"
+
+
 # zinit config
 source "/opt/homebrew/opt/zinit/zinit.zsh"
 autoload -Uz zinit
