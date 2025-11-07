@@ -13,45 +13,43 @@ return {
     "Milly/ddu-filter-kensaku",
   },
   config = function()
-    vim.cmd[[
-      call ddu#custom#patch_global(#{
-        \   ui: 'ff',
-        \   _: #{
-        \     matters: [ 'matcher_kensaku' ],
-        \   },
-        \   uiParams: #{
-        \     ff: #{
-        \       split: 'floating',
-        \     },
-        \   },
-        \   sources: [#{ name: 'file_rec' }],
-        \   sourceOptions: #{
-        \     _: #{
-        \       matchers: [ 'matcher_substring' ],
-        \     },
-        \     file_rec: #{
-        \       matchers: [ 'matcher_substring', 'macher_kensaku' ],
-        \       converters: [ 'converter_devicon' ],
-        \       path: expand("~"),
-        \     },
-        \   },
-        \   sourceParams: #{
-        \     rg: #{
-        \       args: ['--column', '--no-heading', '--color', 'never'],
-        \     },
-        \   },
-        \   kindOptions: #{
-        \     file: #{
-        \       defaultAction: 'open',
-        \     },
-        \   },
-        \   filtersParams: #{
-        \     macher_kensaku: #{
-        \       hightlightMatched: 'Search',
-        \     },
-        \   },
-        \ })
-    ]]
+    vim.fn["ddu#custom#patch_global"]({
+      ui = 'ff',
+      _ = {
+        matters = { 'matcher_kensaku' },
+      },
+      uiParams = {
+        ff = {
+          split = 'floating',
+        },
+      },
+      sources = { { name = 'file_rec' } },
+      sourceOptions = {
+        _ = {
+          matchers = { 'matcher_substring' },
+        },
+        file_rec = {
+          matchers = { 'matcher_substring', 'matcher_kensaku' },
+          converters = { 'converter_devicon' },
+          path = vim.fn.expand("~"),
+        },
+      },
+      sourceParams = {
+        rg = {
+          args = { '--column', '--no-heading', '--color', 'never' },
+        },
+      },
+      kindOptions = {
+        file = {
+          defaultAction = 'open',
+        },
+      },
+      filtersParams = {
+        matcher_kensaku = {
+          hightlightMatched = 'Search',
+        },
+      },
+    })
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "ddu-ff",
       callback = function()
