@@ -2,6 +2,7 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 config.automatically_reload_config = true
+config.front_end = "WebGpu"
 
 
 config.initial_cols = 151
