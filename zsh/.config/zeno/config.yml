@@ -1,4 +1,23 @@
 snippets:
+  - name: git status
+    keyword: gs
+    snippet: git status
+  - name: git status
+    keyword: st
+    snippet: git status
+  - name: git add
+    keyword: ga
+    snippet: git add {{file}}
+  - name: git commit
+    keyword: gc
+    snippet: git commit
+  - name: git push origin main
+    keyword: gps
+    snippet: git push origin main
+  - name: git pull
+    keyword: gpl
+    snippet: git pull
+
   - name: "null"
     keyword: "null"
     snippet: ">/dev/null 2>&1"
@@ -9,3 +28,13 @@ snippets:
       lbuffer: '.+\s'
       # rbuffer: ''
     global: true
+
+  - name: open nvim
+    keyword: vi
+    snippet: nvim {{file}}
+  - name: open .zshrc on nvim
+    keyword: vz
+    snippet: nvim ~/.zshrc
+  - name: source .zshrc
+    keyword: sz
+    snippet: source ~/.zshrc
