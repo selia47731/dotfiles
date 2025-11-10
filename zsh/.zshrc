@@ -104,8 +104,20 @@ export PATH="/usr/local/mysql-8.4.7-macos15-arm64/bin:$PATH"
 # zinit config
 source "/opt/homebrew/opt/zinit/zinit.zsh"
 autoload -Uz zinit
-zinit light olets/zsh-abbr
+# zinit light olets/zsh-abbr
+zinit light yuki-yano/zeno.zsh
+zinit ice wait"0"
+zinit light zdharma-continuum/fast-syntax-highlighting
 
+export FAST_SYNTAX_HIGHLIGHTING_THEME="$HOME/.config/zsh/fsh-themes/aardvark-blue.fast-theme"
+
+if [[ -n $ZENO_LOADED ]]; then
+  # Zeno keybindings
+  bindkey ' ' zeno-auto-snippet
+  bindkey '^x' zeno-insert-snippet
+  bindkey '^r' zeno-history-selection
+  bindkey '^i'  zeno-completion
+fi
 
 # latexmk config
 export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
