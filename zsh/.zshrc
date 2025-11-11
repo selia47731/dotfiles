@@ -15,18 +15,6 @@ if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
 fi
 
 
-# alias config
-# alias vi='nvim'
-# alias vz='nvim ~/.zshrc'
-# alias sz='source ~/.zshrc'
-
-# git alias
-# alias ga='git add'
-# alias gc='git commit'
-# alias gps='git push origin main'
-# alias gpl='git pull'
-# alias gst='git status'
-
 cde() {
   local last_cmd=$(fc -ln -1)
   local -a last_cmd_words=(${(z)last_cmd})
