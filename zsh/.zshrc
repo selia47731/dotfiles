@@ -16,16 +16,16 @@ fi
 
 
 # alias config
-alias vi='nvim'
-alias vz='nvim ~/.zshrc'
-alias sz='source ~/.zshrc'
+# alias vi='nvim'
+# alias vz='nvim ~/.zshrc'
+# alias sz='source ~/.zshrc'
 
 # git alias
-alias ga='git add'
-alias gc='git commit'
-alias gps='git push origin main'
-alias gpl='git pull'
-alias gst='git status'
+# alias ga='git add'
+# alias gc='git commit'
+# alias gps='git push origin main'
+# alias gpl='git pull'
+# alias gst='git status'
 
 cde() {
   local last_cmd=$(fc -ln -1)
@@ -100,27 +100,31 @@ export LUA_CPATH="/usr/local/lua-5.1/lib/lua/5.1/?.so;/usr/local/lua-5.1/lib/lua
 # mysql config
 export PATH="/usr/local/mysql-8.4.7-macos15-arm64/bin:$PATH"
 
+# latexmk config
+export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
+
+autoload -Uz compinit && compinit
 
 # zinit config
 source "/opt/homebrew/opt/zinit/zinit.zsh"
 autoload -Uz zinit
 # zinit light olets/zsh-abbr
-zinit light yuki-yano/zeno.zsh
-zinit ice wait"0"
 zinit light zdharma-continuum/fast-syntax-highlighting
-
 export FAST_SYNTAX_HIGHLIGHTING_THEME="$HOME/.config/zsh/fsh-themes/aardvark-blue.fast-theme"
+zinit ice lucid depth"1" blockf
+export ZENO_HOME="$HOME/.config/zeno"
+zinit light yuki-yano/zeno.zsh
+export ZENO_GIT_CAT="bat --color=always"
+export ZENO_GIT_TREE="eza --tree"
+export ZENO_DISABLE_EXECUTE_CACHE_COMMAND=1
+export ZENO_DISABLE_BUILTIN_COMPLETION=1
 
 if [[ -n $ZENO_LOADED ]]; then
-  # Zeno keybindings
   bindkey ' ' zeno-auto-snippet
-  bindkey '^x' zeno-insert-snippet
+  bindkey '^m' zeno-auto-snippet-and-accept-line
+  bindkey '^i' zeno-completion
+  bindkey '^x ' zeno-insert-space
+  bindkey '^x^m' accept-line
+  bindkey '^x^z' zeno-toggle-auto-snippet
   bindkey '^r' zeno-history-selection
-  bindkey '^i'  zeno-completion
 fi
-
-# latexmk config
-export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
-
-
-autoload -Uz compinit && compinit
