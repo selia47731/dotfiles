@@ -28,6 +28,7 @@ return {
         lowercaseMap = {
           ['+'] = ';',
         },
+        keepState = true,
         immediatelyCancel = true,
         showCandidatesCount = 1,
       }
