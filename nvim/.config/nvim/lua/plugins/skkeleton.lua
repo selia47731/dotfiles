@@ -28,6 +28,8 @@ return {
         lowercaseMap = {
           ['+'] = ';',
         },
+        markerHenkan = "",
+        markerHenkanSelect = "",
         keepState = true,
         immediatelyCancel = true,
         showCandidatesCount = 1,
@@ -37,10 +39,67 @@ return {
       vim.keymap.set('c', '<C-j>', '<Plug>(skkeleton-toggle)', {noremap = true})
     end,
   },{
-    "delphinus/skkeleton_indicator.nvim",
+    "NI57721/skkeleton-state-popup",
     after = "skkeleton",
+    dependencies = {
+      "vim-skk/skkeleton",
+      "vim-denops/denops.vim",
+    },
     config = function()
-      require("skkeleton_indicator").setup({})
+      vim.fn['skkeleton_state_popup#config']{
+        labels = {
+          input = {
+            hira = "かな",
+            kata = "カナ",
+            hankata = "ｶﾅ",
+            zenkaku = "Ａ",
+          },
+          ["input:okurinasi"] = {
+            hira = "▽▽",
+            kata = "▽▽",
+            hankata = "▽▽",
+            zenkaku = "▽▽",
+            abbrev = "abbr",
+          },
+          ["input:okuari"] = {
+            hira = "▽▽",
+            kata = "▽▽",
+            hankata = "▽▽",
+            zenkaku = "▽▽",
+          },
+          henkan = {
+            hira = "▼▼",
+            kata = "▼▼",
+            hankata = "▼▼",
+            abbrev = "abbr",
+          },
+          latin = "英",
+        },
+        opts = {
+          relative = "cursor",
+          col = 0,
+          row = 1,
+          anchor = "NW",
+          style = "minimal",
+        },
+      }
+      vim.fn['skkeleton_state_popup#enable']()
     end,
   },
+  {
+    "NI57721/skkeleton-henkan-highlight",
+    after = "skkeleton",
+    dependencies = {
+      "vim-skk/skkeleton",
+      "vim-denops/denops.vim",
+    },
+    config = function()
+      vim .cmd([[
+        highlight SkkeletonHenkan
+        \ gui=underline term=underline cterm=underline
+        highlight SkkeletonHenkanSelect
+        \ gui=underline,reverse term=underline,reverse cterm=underline,reverse
+    ]])
+    end,
+  }
 }
