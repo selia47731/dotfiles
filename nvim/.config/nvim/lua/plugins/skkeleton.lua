@@ -73,7 +73,7 @@ return {
             hankata = "▼▼",
             abbrev = "abbr",
           },
-          latin = "英",
+          latin = "abc",
         },
         opts = {
           relative = "cursor",
