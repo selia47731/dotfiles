@@ -53,17 +53,23 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- nvim agda settings
-vim.api.nvim_create_augroup("filetypedetect", { clear = true })
+local agda_group = vim.api.nvim_create_augroup("filetypedetect_agda", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = agda_group,
   pattern = "*.agda",
-  command = "set filetype=agda",
+  callback = function()
+    vim.bo.filetype = "agda"
+  end,
 })
 
 -- nvim jupytext settings
-vim.api.nvim_create_augroup("filetypedetect", { clear = true })
+local ipynb_group = vim.api.nvim_create_augroup("filetypedetect_ipynb", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.ipynd",
-  command = "set filetype=jupytext",
+  group = ipynb_group,
+  pattern = "*.ipynb",
+  callback = function()
+    vim.bo.filetype = "ipynb"
+  end,
 })
 
 -- lazy.nvim settings
