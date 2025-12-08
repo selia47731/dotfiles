@@ -1,5 +1,5 @@
 export PS1="selia %1~ %# "
-export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/dotnet:$HOME/.local/bin:/usr/local/opt/openssl@3/bin
+export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin:/usr/local/opt/openssl@3/bin
 
 
 # iTerm2 theme
