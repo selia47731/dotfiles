@@ -1,7 +1,7 @@
 return {
   "lervag/vimtex",
   lazy = false,
-  tag = "v2.16",
+  tag = "v2.17",
   init = function()
     vim.g.vimtex_view_method = 'skim'
     vim.g.vimtex_view_skim_sync = 1
