@@ -26,6 +26,10 @@ cde() {
   fi
 }
 
+# manpager config
+export MANPAGER='nvim +Man!'
+
+
 # Homebrew config
 export PATH="/opt/homebrew/sbin:$PATH"
 export LD_LIBRARY_PATH="/opt/homebrew/lib:$LD_LIBRARY_PATH"
