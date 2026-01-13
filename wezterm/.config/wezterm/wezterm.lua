@@ -9,7 +9,10 @@ config.initial_cols = 151
 config.initial_rows = 45
 
 
-config.font = wezterm.font("Hack Nerd Font Mono")
+config.font = wezterm.font_with_fallback({
+  "Hack Nerd Font Mono",
+  "HackGen",
+})
 config.font_size = 14
 config.use_ime = false
 
