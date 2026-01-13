@@ -8,7 +8,7 @@ return {
       workspace = {
         checkThirdParty = false,
         library = {
-          vim.env.VIMRUNTIME,
+          vim.env.VIMRUNTIME .. '/lua',
         },
       },
       diagnostics = {
