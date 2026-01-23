@@ -1,7 +1,11 @@
 return {
-  "github/copilot.vim",
-  lazy = false,
+  "zbirenbaum/copilot.lua",
+  cmd = "Copilot",
+  event = "InsertEnter",
   config = function()
-    vim.g.copilot_no_maps = true
+    require("copilot").setup({
+      panel = { enabled = false},
+      suggestion = { enabled = false },
+    })
   end,
 }
