@@ -1,16 +1,10 @@
 export PS1="selia %1~ %# "
 export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin:/usr/local/opt/openssl@3/bin
 
-
-# iTerm2 theme
-if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
-  export CLICOLOR=1
-  export TERM=xterm-256color
-fi
+export CLICOLOR=1
 
 # WezTerm theme
 if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
-  export CLICOLOR=1
   export LSCOLORS="exfxcxdxbxegedabagacad"
 fi
 
