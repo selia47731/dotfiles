@@ -91,7 +91,7 @@ export LUA_CPATH="/usr/local/lua-5.1/lib/lua/5.1/?.so;/usr/local/lua-5.1/lib/lua
 export PATH="/usr/local/mysql-8.4.7-macos15-arm64/bin:$PATH"
 
 # latexmk config
-export PATH="/usr/local/texlive/2025/bin/universal-darwin:$PATH"
+export PATH="/usr/local/texlive/2026/bin/universal-darwin:$PATH"
 
 autoload -Uz compinit && compinit
 
