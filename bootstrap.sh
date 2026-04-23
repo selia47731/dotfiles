@@ -92,8 +92,6 @@ luarocks install luaposix
 luarocks install luarocks-build-rust-mlua
 
 
-# Install dvm(deno version manager)
-curl -fsSL https://dvm.deno.dev | sh
 
 
 # Config macSKK
