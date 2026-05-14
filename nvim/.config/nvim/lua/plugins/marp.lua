@@ -3,7 +3,7 @@ return {
   ft = "markdown",
   config = function()
     require("marp").setup({
-      marp_command = "/opt/homebrew/bin/node /opt/homwbrew/bin/marp",
+      marp_command = "marp",
       browser = nil, -- auto-detect
       server_mode = false, -- Use watch mode (-w)
 
