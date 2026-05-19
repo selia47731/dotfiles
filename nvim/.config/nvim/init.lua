@@ -20,6 +20,8 @@ vim.opt.shiftwidth = 2
 vim.opt.laststatus = 3
 vim.opt.incsearch = true
 
+vim.opt.clipboard = "unnamedplus"
+
 -- nvim keymap settings
 vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
