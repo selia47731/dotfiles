@@ -90,4 +90,17 @@ vim.opt.winblend = 10
 vim.opt.pumblend = 7
 vim.cmd('highlight Normal guibg=NONE')
 
+
+-- firenvim settings
+if vim.g.started_by_firenvim == true then
+  vim.opt.signcolumn = 'no'
+  vim.opt.laststatus = 0
+  vim.opt.cursorline = false
+  vim.opt.fillchar:append({eob = " "})
+  vim.cmd("colorscheme sakura")
+end
+
+
+
+
 -- nvim additional keymap settings
