@@ -39,5 +39,5 @@ config.key_tables = require("keybinds").key_tables
 
 
 config.color_scheme = 'Aardvark Blue'
-config.window_background_image = os.getenv("HOME") .. "/wallpaper/9d2klx.png"
+-- config.window_background_image = os.getenv("HOME") .. "/wallpaper/9d2klx.png"
 return config
