@@ -76,6 +76,30 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   end,
 })
 
+-- Mermaid-cli settings
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*.mmd",
+  callback = function(args)
+    local file = args.file
+    local output = file:gsub("%.mmd$", ".svg")
+
+    vim.system({
+      "mmdc",
+      "-i", file,
+      "-o", output
+    }, {text = true}, function(obj)
+      if obj.code == 0 then
+        vim.schedule(function()
+          vim.notify(
+            "Mermaid conversion failed:\n" .. (obj.stderr or ""),
+            vim.log.levels.ERROR
+          )
+        end)
+      end
+    end)
+  end
+})
+
 -- lazy.nvim settings
 require("config.lazy")
 
