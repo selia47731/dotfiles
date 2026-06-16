@@ -17,7 +17,6 @@ else
   echo "Homebrew is already installed"
 fi
 brew install git
-brew tap homebrew/bundle
 
 
 # Clone the dotfiles repository
