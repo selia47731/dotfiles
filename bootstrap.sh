@@ -13,6 +13,7 @@ fi
 # Install homebrew
 if ! command -v brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   echo "Homebrew is already installed"
 fi
@@ -37,14 +38,12 @@ stow -v tmux
 stow -v wezterm
 stow -v emacs
 
-source ~/.zshrc
-
 # Install brew packages
 brew bundle --file Brewfile
 
 
 # Install lua-5.1.5
-LUA_URL="http://www.lua.org/ftp/lua-5.1.5.tar.gz"
+LUA_URL="https://www.lua.org/ftp/lua-5.1.5.tar.gz"
 WORK_DIR="tmp/lua_build"
 INSTALL_DIR="/usr/local/lua-5.1"
 
@@ -65,7 +64,8 @@ else
 fi
 
 # setting up luarocks for lua-5.1.5
-cat <<EOF > ~/.luarocks/config-5.1.lua
+if [[ ! -f "$HOME/.luarocks/config-5.1.lua" ]]; then
+cat <<EOF > $HOME/.luarocks/config-5.1.lua
 lua_version = "5.1"
 rocks_trees = {
    {
