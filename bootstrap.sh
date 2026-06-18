@@ -95,7 +95,7 @@ luarocks install luarocks-build-rust-mlua
 
 # Config macSKK
 SKK_SETTING_DIR="$HOME/Library/Containers/net.mtgto.inputmethod.macSKK/Data/Documents/Setttings"
-SKK_RULES_URL="https://gist.githubusercontent.com/selia47731/f6b2f6db7b361c89e758fcbbaf948fd5/raw/1c17b37b5e962421c683171b6de12a833bf2805f/kana-rule.conf
+SKK_RULES_URL="https://gist.githubusercontent.com/selia47731/dfff4a13939e24c0d51601bcd870f5ec/raw/9212e95753d6099d732ba52cbd6c9eecac1554b4/kana-rule_us.conf"
 
 if [[ ! -d "$SKK_SETTING_DIR" ]]; then
   mkdir -p "$SKK_SETTING_DIR"
