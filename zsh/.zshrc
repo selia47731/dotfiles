@@ -99,8 +99,6 @@ autoload -Uz compinit && compinit
 source "/opt/homebrew/opt/zinit/zinit.zsh"
 autoload -Uz zinit
 # zinit light olets/zsh-abbr
-zinit light zdharma-continuum/fast-syntax-highlighting
-export FAST_SYNTAX_HIGHLIGHTING_THEME="$HOME/.config/zsh/fsh-themes/aardvark-blue.fast-theme"
 zinit ice lucid depth"1" blockf
 export ZENO_HOME="$HOME/.config/zeno"
 zinit light yuki-yano/zeno.zsh
@@ -109,12 +107,13 @@ export ZENO_GIT_TREE="eza --tree"
 export ZENO_DISABLE_EXECUTE_CACHE_COMMAND=1
 export ZENO_DISABLE_BUILTIN_COMPLETION=1
 
-if [[ -n $ZENO_LOADED ]]; then
-  bindkey ' ' zeno-auto-snippet
-  bindkey '^m' zeno-auto-snippet-and-accept-line
-  bindkey '^i' zeno-completion
-  bindkey '^x ' zeno-insert-space
-  bindkey '^x^m' accept-line
-  bindkey '^x^z' zeno-toggle-auto-snippet
-  bindkey '^r' zeno-history-selection
-fi
+bindkey ' ' zeno-auto-snippet
+bindkey '^m' zeno-auto-snippet-and-accept-line
+bindkey '^i' zeno-completion
+bindkey '^x ' zeno-insert-space
+bindkey '^x^m' accept-line
+bindkey '^x^z' zeno-toggle-auto-snippet
+bindkey '^r' zeno-history-selection
+
+zinit light zdharma-continuum/fast-syntax-highlighting
+export FAST_SYNTAX_HIGHLIGHTING_THEME="$HOME/.config/zsh/fsh-themes/aardvark-blue.fast-theme"
