@@ -1,8 +1,4 @@
 tap "felixkratz/formulae", trusted: true
-# Perceptual video quality assessment based on multi-method fusion
-brew "libvmaf"
-# Codec library for encoding and decoding AV1 video streams
-brew "aom"
 # Mozilla CA certificate store
 brew "ca-certificates"
 # Cryptography and SSL/TLS Toolkit
@@ -37,12 +33,8 @@ brew "cabextract"
 brew "libpng"
 # Software library to render fonts
 brew "freetype"
-# XML-based font configuration API for X Windows
-brew "fontconfig"
 # Perl compatible regular expressions library with a new API
 brew "pcre2"
-# Core application library for C
-brew "glib"
 # X.Org: Protocol Headers
 brew "xorgproto"
 # X.Org: A Sample Authorization Protocol for X
@@ -71,22 +63,12 @@ brew "cmake"
 brew "libnghttp2"
 # Library and utilities for processing GIFs
 brew "giflib"
-# Performance-portable, length-agnostic SIMD with runtime dispatch
-brew "highway"
-# Library of 2D and 3D vector, matrix, and math operations
-brew "imath"
 # JPEG image codec that aids compression and decompression
 brew "jpeg-turbo"
-# TIFF library and utilities
-brew "libtiff"
-# Color management engine supporting ICC profiles
-brew "little-cms2"
-# High dynamic-range image file format
-brew "openexr"
-# New file format for still image compression
-brew "jpeg-xl"
 # Library for encoding and decoding .avif files
 brew "libavif"
+# TIFF library and utilities
+brew "libtiff"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
 # Graphics library to dynamically manipulate images
@@ -95,6 +77,8 @@ brew "gd"
 brew "libsodium"
 # Dependency Manager for PHP
 brew "composer"
+# Color management engine supporting ICC profiles
+brew "little-cms2"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
 # Command-line utilities for working with desktop entries
@@ -151,6 +135,14 @@ brew "gnutls"
 brew "go"
 # Open-source build automation tool based on the Groovy and Kotlin DSL
 brew "gradle"
+# Performance-portable, length-agnostic SIMD with runtime dispatch
+brew "highway"
+# Library of 2D and 3D vector, matrix, and math operations
+brew "imath"
+# High dynamic-range image file format
+brew "openexr"
+# New file format for still image compression
+brew "jpeg-xl"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
 # Image processing tools collection
@@ -161,8 +153,6 @@ brew "haskell-stack"
 brew "pkgconf"
 # File format designed to store large amounts of data
 brew "hdf5"
-# Configurable static site generator
-brew "hugo"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@77"
 # Tools and libraries to manipulate images in select formats
@@ -171,8 +161,6 @@ brew "imagemagick"
 brew "libexif"
 # Portable Foreign Function Interface library
 brew "libffi"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
 # Light HTTP/1.1 server library
 brew "libmicrohttpd"
 # LLVM's OpenMP runtime library
@@ -245,6 +233,8 @@ brew "tree-sitter-cli"
 brew "typst"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Internet file retriever
@@ -263,26 +253,32 @@ brew "zinit"
 brew "felixkratz/formulae/borders", trusted: true
 # Application uninstaller
 cask "appcleaner"
-# Records audio from any application
-cask "audio-hijack"
 # Japanese input method
 cask "azookey"
 # Virtual Audio Driver
 cask "blackhole-16ch"
 # Virtual Audio Driver
 cask "blackhole-2ch"
+# AI-powered translator
+cask "deepl"
+# Voice and text chat software
+cask "discord"
 cask "font-annotation-mono"
 cask "font-hack-nerd-font"
 cask "font-hackgen"
 cask "font-monaspace"
+# Web browser
+cask "google-chrome"
 # Customise mouse behavior
 cask "linearmouse"
 # SKK Input Method
 cask "macskk"
 # Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
-# Web browser
-cask "opera"
+# Open-source, self-hosted Slack-alternative
+cask "mattermost"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
 # PDF reader and note-taking application
 cask "skim"
 # Team communication and collaboration software
@@ -291,4 +287,8 @@ cask "slack"
 cask "vivaldi"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm@nightly"
+# Multiplayer code editor
+cask "zed"
+# Video communication and virtual meeting platform
+cask "zoom"
 npm "@mermaid-js/mermaid-cli"
