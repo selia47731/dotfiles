@@ -38,11 +38,10 @@ stow -v tmux
 stow -v wezterm
 stow -v emacs
 
-# Install brew packages
-brew bundle --file Brewfile
-
 
 # Install lua-5.1.5
+brew install luarocks
+
 LUA_URL="https://www.lua.org/ftp/lua-5.1.5.tar.gz"
 WORK_DIR="tmp/lua_build"
 INSTALL_DIR="/usr/local/lua-5.1"
@@ -92,12 +91,18 @@ luarocks install luarocks-build-rust-mlua
 
 
 
-
 # Config macSKK
+brew install --cask macskk
+
 SKK_SETTING_DIR="$HOME/Library/Containers/net.mtgto.inputmethod.macSKK/Data/Documents/Setttings"
 SKK_RULES_URL="https://gist.githubusercontent.com/selia47731/dfff4a13939e24c0d51601bcd870f5ec/raw/9212e95753d6099d732ba52cbd6c9eecac1554b4/kana-rule_us.conf"
 
 if [[ ! -d "$SKK_SETTING_DIR" ]]; then
   mkdir -p "$SKK_SETTING_DIR"
 fi
-curl -fsSL "$SKK_RULES_URL" -o "$SKK_SETTING_DIR/kana-rule.conf"
+curl -fsSL -o "$SKK_SETTING_DIR/$(basename "$SKK_RULES_URL")" "$SKK_RULES_URL"
+
+
+
+# Install brew packages
+brew bundle --file Brewfile
