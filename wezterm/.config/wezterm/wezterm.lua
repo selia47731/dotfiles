@@ -13,7 +13,7 @@ config.font = wezterm.font_with_fallback({
   "Hack Nerd Font Mono",
   "HackGen",
 })
-config.font_size = 14
+config.font_size = 16
 config.use_ime = false
 
 config.window_background_opacity = 0.85
