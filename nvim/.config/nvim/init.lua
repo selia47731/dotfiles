@@ -14,6 +14,9 @@ vim.opt.list = true
 vim.opt.ignorecase = true
 vim.opt.listchars:append({ extends = '>', precedes = '<' })
 
+vim.opt.number = true
+vim.opt.relativenumber = true
+
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.tabstop = 2
