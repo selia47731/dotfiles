@@ -15,17 +15,19 @@ return {
     }
   },
   init = function()
-    local oilPathPatterns = { "oil://", "oil-ssh://", "oil-trash://" }
-    local path = vim.fn.expand("%:p")
+    if vim.fn.argc() == 0 then
+      return
+    end
 
-    local isDir = vim.fn.isdirectory(path)
-    local isOilPath = vim.iter(oilPathPatterns):any(function(opp)
-      return (string.find(path, opp, 1, true)) ~= nil
-    end)
-    if isDir or isOilPath then
-      vim.cmd.Oil()
+    local arg = vim.fn.argv(0)
+
+    if vim.fn.isdirectory(arg) == 1 then
+      vim.schedule(function()
+        vim.cmd.Oil(arg)
+      end)
     end
   end,
+
   opts = function()
     return {
       keymaps = {
