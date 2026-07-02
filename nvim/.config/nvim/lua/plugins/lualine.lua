@@ -6,6 +6,24 @@ return{
     'nvim-tree/nvim-web-devicons'
   },
   config = function()
+    -- oilでのファイル名対応(相対path表示)
+    local function fmt_filename(str)
+      local path = str:gsub('^oil://', '')
+
+      local cwd = vim.fn.getcwd()
+      if vim.startswith(path, cwd) then
+        local rel = path:sub(#cwd + 2)
+        return rel ~= '' and rel or '.'
+      end
+
+      local home = vim.fn.expand('~')
+      if vim.startswith(path, home) then
+        return '.' .. path:sub(#home + 1)
+      end
+
+      return path
+    end
+
     require('lualine').setup({
       options = {
         icons_enabled = true,
@@ -30,7 +48,8 @@ return{
           {
             'filename',
             file_status = true,
-            path = 1,
+            path = 2,
+            fmt = fmt_filename
           },
         },
         lualine_x = {'diagnostics','encoding','filetype'},
@@ -44,7 +63,8 @@ return{
           {
             'filename',
             file_status = true,
-            path = 1,
+            path = 2,
+            fmt = fmt_filename
           },
         },
         lualine_x = {'location'},
