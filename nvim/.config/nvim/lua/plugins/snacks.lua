@@ -5,9 +5,68 @@ return {
 
   ---@type snacks.Config
   opts = {
-    dasdash = { enable = true },
-    picker = { enable = true },
-    bigfile = { enable = true },
-    scope = { enable = true },
+    dashboard = {
+      enabled = true,
+      preset = {
+        header = [[
+ ⣿⡇⣿⣿⣿⠛⠁⣴⣿⡿⠿⠧⠹⠿⠘⣿⣿⣿⡇⢸⡻⣿⣿⣿⣿⣿⣿⣿
+ ⢹⡇⣿⣿⣿⠄⣞⣯⣷⣾⣿⣿⣧⡹⡆⡀⠉⢹⡌⠐⢿⣿⣿⣿⡞⣿⣿⣿
+ ⣾⡇⣿⣿⡇⣾⣿⣿⣿⣿⣿⣿⣿⣿⣄⢻⣦⡀⠁⢸⡌⠻⣿⣿⣿⡽⣿⣿
+ ⡇⣿⠹⣿⡇⡟⠛⣉⠁⠉⠉⠻⡿⣿⣿⣿⣿⣿⣦⣄⡉⠂⠈⠙⢿⣿⣝⣿
+ ⠤⢿⡄⠹⣧⣷⣸⡇⠄⠄⠲⢰⣌⣾⣿⣿⣿⣿⣿⣿⣶⣤⣤⡀⠄⠈⠻⢮
+   ⣧⠄⢘⢻⣿⡇⢀⣀⠄⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠄⢀
+   ⣿⡆⢸⣿⣿⣿⣬⣭⣴⣿⣿⣿⣿⣿⣿⣿⣯⠝⠛⠛⠙⢿⡿⠃⠄⢸
+   ⢿⣿⡀⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⡾⠁⢠⡇⢀
+   ⢸⣿⡇⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣏⣫⣻⡟⢀⠄⣿⣷⣾
+   ⢸⣿⡇⠄⠈⠙⠿⣿⣿⣿⣮⣿⣿⣿⣿⣿⣿⣿⣿⡿⢠⠊⢀⡇⣿⣿
+    ⣿⡇⢀⡲⠄⠄⠈⠙⠻⢿⣿⣿⠿⠿⠟⠛⠋⠁⣰⠇ ⢸⣿⣿⣿
+    ⣿⡇⢬⡻⡇⡄⠄⠄⠄⡰⢖⠔⠉⠄⠄⠄⠄⣼⠏  ⢸⣿⣿⣿
+    ⣿⡇⠄⠙⢌⢷⣆⡀⡾⡣⠃⠄⠄⠄⠄⠄⣼⡟    ⢿⣿⣿]],
+        keys = {
+          {
+            icon = " ",
+            key = "f",
+            desc = "Find File",
+            action = ":lua Snacks.dashboard.pick('files')"
+          },
+          {
+            icon = "󰱼 ",
+            key = "g",
+            desc = "Live Grep",
+            action = ":lua Snacks.dashboard.pick('live_grep')"
+          },
+          {
+            icon = " ",
+            key = "r",
+            desc = "Recent Files",
+            action = ":lua Snacks.dashboard.pick('oldfiles')"
+          }
+        }
+      },
+      sections = {
+        { section = "header" },
+        { section = "keys", gap = 1, padding = 1 },
+        { section = "recent_files", limit = 5, paddpadding = 1 },
+        { section = "startup"}
+      }
+    },
+    picker = {
+      enabled = true,
+
+      ui_select = true,
+      sources = {
+        files = {
+          hidden = true,
+          cmd = "fd"
+        },
+        grep = {
+          hidden = true,
+          cmd = "rg",
+          regex = true
+        }
+      }
+    },
+    bigfile = { enabled = true },
+    scope = { enabled = true },
   }
 }
