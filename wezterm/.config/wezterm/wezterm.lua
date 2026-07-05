@@ -6,7 +6,7 @@ config.front_end = "WebGpu"
 
 
 config.initial_cols = 151
-config.initial_rows = 45
+config.initial_rows = 60
 
 
 config.font = wezterm.font_with_fallback({
