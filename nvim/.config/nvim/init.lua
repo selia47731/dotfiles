@@ -30,35 +30,6 @@ vim.loader.enable()
 -- nvim keymap settings
 vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
--- nvim IME settings
--- local ime_group = vim.api.nvim_create_augroup("IME", { clear = false })
--- vim.api.nvim_create_autocmd("CmdlineLeave", {
---   group = ime_group,
---   pattern = { "/", "?" },
---   callback = function()
---     vim.fn.system("im-select com.apple.keylayout.British")
---   end,
--- })
-
--- vim.api.nvim_create_autocmd("InsertLeave", {
---   group = ime_group,
---   callback = function()
---     vim.fn.system("im-select com.apple.keylayout.British")
---   end,
--- })
-
-
--- nvim scratchpad settings
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "scratchpad.md", "scratchpad.org" },
-  callback =function()
-    vim.wo.wrap = true
-    vim.wo.linebreak = true
-    vim.wo.spell = true
-    vim.wo.spelllang = { "ja" }
-  end,
-})
-
 
 -- Mermaid-cli settings
 vim.api.nvim_create_autocmd("BufWritePost", {
