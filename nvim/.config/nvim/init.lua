@@ -60,16 +60,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 
--- nvim jupytext settings
-local ipynb_group = vim.api.nvim_create_augroup("filetypedetect_ipynb", { clear = true })
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  group = ipynb_group,
-  pattern = "*.ipynb",
-  callback = function()
-    vim.bo.filetype = "ipynb"
-  end,
-})
-
 -- Mermaid-cli settings
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*.mmd",
