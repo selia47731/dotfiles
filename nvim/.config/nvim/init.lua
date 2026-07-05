@@ -109,9 +109,7 @@ require("config.lazy")
 -- nvim colorscheme settings
 local term_program = vim.env.TERM_PROGRAM
 vim.opt.background = "dark"
-if term_program == "iTerm.app" then
-  vim.cmd("colorscheme sakura")
-elseif term_program == "WezTerm" then
+if term_program == "WezTerm" then
   vim.cmd("colorscheme cyberdream")
 end
 vim.opt.termguicolors = true
@@ -126,7 +124,7 @@ if vim.g.started_by_firenvim == true then
   vim.opt.laststatus = 0
   vim.opt.cursorline = false
   vim.opt.fillchar:append({eob = " "})
-  vim.cmd("colorscheme sakura")
+  vim.cmd("colorscheme cyberdream")
 end
 
 
