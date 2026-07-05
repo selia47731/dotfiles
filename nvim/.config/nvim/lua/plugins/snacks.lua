@@ -68,5 +68,15 @@ return {
     },
     bigfile = { enabled = true },
     scope = { enabled = true },
-  }
+    indent = { enabled = true },
+    lazygit = {
+      enabled = true,
+      configure = true,
+    }
+  },
+  config = function(_, opts)
+    vim.keymap.set("n", "<leader>gg", function()
+      Snacks.lazygit.open(opts)
+    end, { noremap = true, silent = true, desc = "Open LazyGit" })
+  end
 }
