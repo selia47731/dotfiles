@@ -46,7 +46,7 @@ return {
       sections = {
         { section = "header" },
         { section = "keys", gap = 1, padding = 1 },
-        { section = "recent_files", limit = 5, paddpadding = 1 },
+        { section = "recent_files", limit = 5, padding = 1 },
         { section = "startup"}
       }
     },
@@ -75,6 +75,8 @@ return {
     }
   },
   config = function(_, opts)
+    require("snacks").setup(opts)
+
     vim.keymap.set("n", "<leader>gg", function()
       Snacks.lazygit.open(opts)
     end, { noremap = true, silent = true, desc = "Open LazyGit" })
