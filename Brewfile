@@ -233,8 +233,6 @@ brew "suite-sparse"
 brew "sundials"
 # Terminal multiplexer
 brew "tmux"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Markup-based typesetting system
