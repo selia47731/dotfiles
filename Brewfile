@@ -157,6 +157,8 @@ brew "hdf5"
 brew "icu4c@77"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# Simple terminal UI for git commands
+brew "lazygit"
 # EXIF parsing library
 brew "libexif"
 # Portable Foreign Function Interface library
@@ -189,6 +191,8 @@ brew "neovim"
 brew "ninja"
 # Network Kanji code conversion Filter (NKF)
 brew "nkf"
+# Create, run, and share large language models (LLMs)
+brew "ollama", restart_service: :changed
 # High performance message passing library
 brew "open-mpi"
 # Development kit for the Java programming language
@@ -215,10 +219,14 @@ brew "rbenv"
 brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
+# Blazing-fast modern Lua linter
+brew "selene"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Opinionated Lua code formatter
+brew "stylua"
 # Suite of Sparse Matrix Software
 brew "suite-sparse"
 # Nonlinear and differential/algebraic equations solver
@@ -259,6 +267,8 @@ cask "azookey"
 cask "blackhole-16ch"
 # Virtual Audio Driver
 cask "blackhole-2ch"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # AI-powered translator
 cask "deepl"
 # Voice and text chat software
@@ -269,6 +279,8 @@ cask "font-hackgen"
 cask "font-monaspace"
 # Web browser
 cask "google-chrome"
+# Open-source keystroke visualiser
+cask "keycastr"
 # Customise mouse behavior
 cask "linearmouse"
 # SKK Input Method
@@ -279,6 +291,10 @@ cask "mactex-no-gui"
 cask "mattermost"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
+# Open-source software for live streaming and screen recording
+cask "obs"
+# NAS management application
+cask "qfinder-pro"
 # PDF reader and note-taking application
 cask "skim"
 # Team communication and collaboration software
