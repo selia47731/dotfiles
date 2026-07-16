@@ -29,6 +29,10 @@ vim.loader.enable()
 
 -- nvim keymap settings
 vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>sv", "<Cmd>vsplit<CR>", { silent = true })
+vim.keymap.set("n", "<leader>sh", "<Cmd>split<CR>", { silent = true })
+vim.keymap.set("n", "<leader>se", "<Cmd>wincmd =<CR>", { silent = true })
+vim.keymap.set("n", "<leader>sq", "<Cmd>close<CR>", { silent = true })
 
 
 -- Mermaid-cli settings
