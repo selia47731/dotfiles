@@ -23,7 +23,6 @@ The script will:
 - Install required Homebrew packages
 - Set up symlinks using `stow` (`zsh`, `nvim`, `tmux`, `wezterm`, `emacs`)
 - Install Lua 5.1.5 and configure luarocks
-- Install Deno using [dvm](https://github.com/justjavac/dvm)
 - Set up `macSKK` for Japanese input(Kana rules included)
 
 # Notes
