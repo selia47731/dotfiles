@@ -13,12 +13,12 @@
 
   outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs }:
     let
-      host = import ./hosts/selia/host.nix;
+      host = import ./hosts/selia/host-vars.nix;
     in {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#selia
       darwinConfigurations.selia = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self; };
+        specialArgs = { inherit self host; };
 
         modules = [
           ./hosts/selia/configuration.nix

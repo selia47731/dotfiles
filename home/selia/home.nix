@@ -2,7 +2,7 @@
 
 builtins.trace host
 {
-  home.stateVersion = "26.05";
+  home.stateVersion = "25.11";
 
   home.username = host.username;
   home.homeDirectory = host.homeDirectory;

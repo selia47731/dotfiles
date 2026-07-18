@@ -1,10 +1,14 @@
-{ self, pkgs, ... }:
+{ host, self, pkgs, ... }:
 
 {
   system = {
     stateVersion = 6;
 
     configurationRevision = self.rev or self.dirtyRev or null;
+  };
+
+  users.users.${host.username} = {
+    home = host.homeDirectory;
   };
 
   nix.settings.experimental-features = [
