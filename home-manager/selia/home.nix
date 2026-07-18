@@ -1,10 +1,10 @@
-{ host, pkgs, ... }:
+{ user, pkgs, ... }:
 
 {
   home.stateVersion = "25.11";
 
-  home.username = host.username;
-  home.homeDirectory = host.homeDirectory;
+  home.username = user;
+  home.homeDirectory = "/Users/${user}";
 
   home.packages = with pkgs; [
     git

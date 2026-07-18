@@ -6,8 +6,10 @@
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
-      nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,29 +17,38 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs }:
+  outputs = inputs@{
+    self,
+    nixpkgs,
+    nix-darwin,
+    home-manager,
+    nix-homebrew
+  }:
     let
-      host = import ./nix-darwin/selia/host-vars.nix;
+      pc = {
+        mac = {
+          hostPlatform = "aarch64-darwin";
+          user = "selia";
+          hostname = "selia";
+        };
+      };
     in {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#selia
-      darwinConfigurations.selia = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self host; };
+      darwinConfigurations = {
+        # $ darwin-rebuild build --flake .#selia
+        "${pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
+          specialArgs = {
+          inherit self;
+          inherit (pc.mac) user hostPlatform;
+          };
 
-        modules = [
-          ./nix-darwin/selia/configuration.nix
+          modules = [
+            ./nix-darwin/selia
 
-          home-manager.darwinModules.home-manager
+            home-manager.darwinModules.home-manager
+            nix-homebrew.darwinModules.nix-homebrew
 
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.extraSpecialArgs = { inherit host; };
-
-            home-manager.users.selia = import ./home-manager/selia/home.nix;
-          }
-        ];
+          ];
+        };
       };
     };
 }
