@@ -1,6 +1,5 @@
 { host, pkgs, ... }:
 
-builtins.trace host
 {
   home.stateVersion = "25.11";
 
