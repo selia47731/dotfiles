@@ -9,6 +9,6 @@
     inherit user;
     };
 
-    users.selia = import ../../home-manager/selia/home.nix;
+    users.selia = import ../../../home-manager/selia/home.nix;
   };
 }
