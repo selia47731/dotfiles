@@ -36,6 +36,7 @@
       # Tools
       "chatgpt"
       "deepl"
+      "claude"
 
       # Communication
       "discord"
