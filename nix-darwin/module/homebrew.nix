@@ -17,7 +17,7 @@
     global.autoUpdate = false;
 
     onActivation = {
-      cleanup = "none";
+      cleanup = "uninstall";
     };
 
     brews = [
