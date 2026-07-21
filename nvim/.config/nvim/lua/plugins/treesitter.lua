@@ -13,22 +13,24 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       callback = function(event)
         local ft = vim.bo[event.buf].filetype
-        local lang vim.treesitter.language.get_lang(ft)
+        local lang = vim.treesitter.language.get_lang(ft)
         if not lang then
           return
         end
 
-        -- すでにインストールされている場合はスキップ
-        if vim.treesitter.language.get_parser(nil, lang) then
+        vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+        if pcall(vim.treesitter.language.add, lang) then
+          pcall(vim.treesitter.start, event.buf)
           return
         end
 
-        ts.install({ lang })
-
-        pcall(vim.treesitter.start, event.buf)
-
-        vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        ts.install({ lang }, function()
+          vim.schedule(function()
+            pcall(vim.treesitter.start, event.buf)
+          end)
+        end)
       end,
     })
   end,
