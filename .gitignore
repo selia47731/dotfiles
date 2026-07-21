@@ -38,7 +38,7 @@ Temporary Items
 
 
 # lazy-nvim
-nvim/.config/nvim/lazy-lock.json
+nvim/lazy-lock.json
 
 # emacs
 emacs/.emacs.d/*
