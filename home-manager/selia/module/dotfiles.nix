@@ -25,8 +25,4 @@ in
       recursive = true;
     };
   };
-
-  home.file.".zshrc" = {
-    source = ../../../zsh/.zshrc;
-  };
 }
