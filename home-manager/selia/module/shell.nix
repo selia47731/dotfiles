@@ -1,4 +1,4 @@
-{ pkgs, ... }
+{ pkgs, ... }:
 
 {
   programs = {
@@ -25,15 +25,15 @@
       historyLimit = 50000;
       terminal = "tmux-256color";
 
-      plugins = with pkgs.tmuxPlugins; {
+      plugins = with pkgs.tmuxPlugins; [
         sensible
-      };
+      ];
     };
   };
 
-  home.packages = with pkgs; {
+  home.packages = with pkgs; [
     fd
     nkf
     zinit
-  };
-};
+  ];
+}

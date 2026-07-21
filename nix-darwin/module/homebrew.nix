@@ -72,7 +72,7 @@
       {
         name = "felixkratz/formulae";
         trusted = true;
-      };
+      }
     ];
   };
 }

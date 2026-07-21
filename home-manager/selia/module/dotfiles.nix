@@ -26,7 +26,7 @@ in
     };
   };
 
-  home.file = {
-    ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/zsh/.zshrc";
+  home.file.".zshrc" = {
+    source = ../../../zsh/.zshrc;
   };
 }
