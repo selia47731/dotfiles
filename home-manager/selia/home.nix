@@ -6,13 +6,14 @@
   home.username = user;
   home.homeDirectory = "/Users/${user}";
 
-  home.packages = with pkgs; [
-    git
-    eza
-    bat
-    fd
-    ripgrep
-  ];
-
   programs.home-manager.enable = true;
+
+  imports = [
+    ./module/dev.nix
+    ./module/dotfiles.nix
+    ./module/git.nix
+    ./module/gui.nix
+    ./module/media.nix
+    ./module/shell.nix
+  ];
 }

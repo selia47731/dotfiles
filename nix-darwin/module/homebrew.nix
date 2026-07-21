@@ -54,7 +54,6 @@
       "font-monaspace"
 
       # Terminal / Editor
-      "wezterm@nightly"
       "zed"
 
       # IME
@@ -71,7 +70,7 @@
 
     taps = [
       {
-        "felixkratz/formulae";
+        name = "felixkratz/formulae";
         trusted = true;
       };
     ];
