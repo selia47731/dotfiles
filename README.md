@@ -2,28 +2,48 @@
 
 This repository contains my dotfiles tailored for macOS(Apple Silicon).
 
-## Prerequisites
-Make sure you have installed the following tools:
-```bash
-sudo xcode-select --install
-```
-Check that `xcode-select -p` returns `/Library/Developer/CommandLineTools`.
+## Features
 
-## Supported Environment
-This setup is strictly for macOS (Apple Silicon, arm64) and will **not work on Intel Macs or other platforms**.
+- nix-darwin
+- Home Manager
+- nix-homebrew
+- Falakes
 
 ## Installation
-Run the bootstrap script;
 ```bash
-/bin/bash -c "$(curl -fsSL https://https://raw.githubusercontent.com/selia47731/dotfiles/refs/heads/main/bootstrap.sh)"
+git clone git@github.com:selia47731/dotfiles.git
+cd dotfiles
+./bootstrap.sh
 ```
-The script will:
-- Check OS & architecture (will exit if not on macOS Apple Silicon)
-- Install Homebrew (if not already installed)
-- Install required Homebrew packages
-- Set up symlinks using `stow` (`zsh`, `nvim`, `tmux`, `wezterm`, `emacs`)
-- Install Lua 5.1.5 and configure luarocks
-- Set up `macSKK` for Japanese input(Kana rules included)
+## Updating
+```bash
+git pull
+sudo darwin-rebuild switch --flake .#selia
+```
+
+## Repository layout
+```
+dotfiles/
+├── bootstrap.sh
+├── emacs/
+├── flake.lock
+├── flake.nix
+├── home-manager/
+│   └── selia/
+│       ├── home.nix
+│       └── module/
+├── nix-darwin/
+│   ├── default.nix
+│   └── module/
+├── nvim/
+├── README.md
+├── wezterm/
+└── zsh/
+    ├── zeno/
+    └── zsh/
+        └── fsh-themes/
+```
+
 
 # Notes
 - If `bootstrap.sh` is not executable, run:
