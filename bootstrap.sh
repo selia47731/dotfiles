@@ -1,100 +1,84 @@
 #!/bin/bash
-# This script is for macOS arm64
+# Bootstrap the macOS environment with Nix and nix-darwin.
 
-set -euxo pipefail
+set -euo pipefail
 
-# First ckeck OS and architecture
-if [[ "$(uname -sm)" != "Darwin arm64" ]]; then
-  echo "Unsupported OS or architecture"
-  exit 1
-fi
+readonly REPOSITORY_URL="https://github.com/selia47731/dotfiles.git"
+readonly DOTFILES_DIR="${HOME}/dotfiles"
+readonly FLAKE_HOST="selia"
 
-
-# Install homebrew
-if ! command -v brew >/dev/null 2>&1; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-  echo "Homebrew is already installed"
-fi
-brew install git
-
-
-# Clone the dotfiles repository
-git clone https://github.com/selia47731/dotfiles.git
-cd dotfiles || exit 1
-
-# Install stow
-brew install stow
-
-# Use the stow command to create symlinks
-if [[ ! -d zsh || ! -d nvim || ! -d tmux ]]; then
-  echo "Required directories (zsh, nvim, tmux) are missing in the dotfiles repository"
-  exit 1
-fi
-stow -v zsh
-stow -v nvim
-stow -v tmux
-stow -v wezterm
-stow -v emacs
-
-
-# Install lua-5.1.5
-brew install luarocks
-
-LUA_URL="https://www.lua.org/ftp/lua-5.1.5.tar.gz"
-WORK_DIR="tmp/lua_build"
-INSTALL_DIR="/usr/local/lua-5.1"
-
-if [[ ! -d "$INSTALL_DIR" ]]; then
-  mkdir -p "$WORK_DIR"
-  cd "$WORK_DIR" || exit 1
-
-  curl -R -O "$LUA_URL"
-  tar zxf lua-5.1.5.tar.gz
-  cd lua-5.1.5 || exit 1
-
-  sed -i.bak "s|^INSTALL_TOP= /usr/local|INSTALL_TOP= ${INSTALL_DIR}|" Makefile
-
-  make macosx
-  make install
-else
-  echo "lua-5.1.5 is already installed at $INSTALL_DIR"
-fi
-
-# setting up luarocks for lua-5.1.5
-if [[ ! -f "$HOME/.luarocks/config-5.1.lua" ]]; then
-cat <<EOF > $HOME/.luarocks/config-5.1.lua
-lua_version = "5.1"
-rocks_trees = {
-   {
-      bin = "${INSTALL_DIR}/bin",
-      lib = "${INSTALL_DIR}/lib",
-      name = "user",
-      root = "${INSTALL_DIR}",
-      share = "${INSTALL_DIR}/share"
-   }
+log() {
+  printf '\n==> %s\n' "$*"
 }
-variables = {
-   LUA = "${INSTALL_DIR}/bin/lua",
-   LUA_BINDIR = "${INSTALL_DIR}/bin",
-   LUA_DIR = "${INSTALL_DIR}",
-   LUA_INCDIR = "${INSTALL_DIR}/include",
-   LUA_LIBDIR = "${INSTALL_DIR}/lib"
+
+die() {
+  printf 'Error: %s\n' "$*" >&2
+  exit 1
 }
-EOF
 
-luarocks config lua_version 5.1
-luarocks install luautf8
-luarocks install luaposix
-luarocks install luarocks-build-rust-mlua
+# This bootstrap script currently targets macOS.
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  die "This bootstrap script currently supports macOS only."
+fi
 
+# Xcode Command Line Tools supplies Git and the macOS SDK.
+if ! xcode-select -p >/dev/null 2>&1; then
+  log "Installing Xcode Command Line Tools"
+  xcode-select --install
+  die "Complete the Command Line Tools installation, then rerun this script."
+fi
 
+if ! command -v git >/dev/null 2>&1; then
+  die "Git is unavailable. Check the Xcode Command Line Tools installation."
+fi
 
-# Config macSKK
-brew install --cask macskk
+# Install Nix in multi-user mode.
 
-SKK_SETTING_DIR="$HOME/Library/Containers/net.mtgto.inputmethod.macSKK/Data/Documents/Setttings"
+if ! command -v nix >/dev/null 2>&1; then
+  log "Installing Nix"
+  curl \
+    --proto '=https' \
+    --tlsv1.2 \
+    --fail \
+    --show-error \
+    --location \
+    https://nixos.org/nix/install |
+    sh -s -- --daemon
+
+  readonly NIX_DAEMON_PROFILE="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+
+  if [[ -r "$NIX_DAEMON_PROFILE" ]]; then
+    # shellcheck disable=SC1090
+    source "$NIX_DAEMON_PROFILE"
+  fi
+else
+  log "Nix is already installed"
+fi
+
+if ! command -v nix >/dev/null 2>&1; then
+  die "The nix command is unavailable. Open a new shell and rerun this script."
+fi
+
+# Clone the dotfiles repository.
+if [[ -d "${DOTFILES_DIR}/.git" ]]; then
+  log "Using the existing dotfiles repository"
+elif [[ -e "$DOTFILES_DIR" ]]; then
+  die "${DOTFILES_DIR} already exists but is not a Git repository."
+else
+  log "Cloning the dotfiles repository"
+  git clone "$REPOSITORY_URL" "$DOTFILES_DIR"
+fi
+
+# Apply the nix-darwin configuration.
+log "Applying the nix-darwin configuration"
+
+sudo nix \
+  --extra-experimental-features "nix-command flakes" \
+  run nix-darwin/master#darwin-rebuild -- \
+  switch \
+  --flake "${DOTFILES_DIR}#${FLAKE_HOST}"
+
+SKK_SETTING_DIR="$HOME/Library/Containers/net.mtgto.inputmethod.macSKK/Data/Documents/Settings"
 SKK_RULES_URL="https://gist.githubusercontent.com/selia47731/dfff4a13939e24c0d51601bcd870f5ec/raw/9212e95753d6099d732ba52cbd6c9eecac1554b4/kana-rule_us.conf"
 
 if [[ ! -d "$SKK_SETTING_DIR" ]]; then
@@ -102,7 +86,5 @@ if [[ ! -d "$SKK_SETTING_DIR" ]]; then
 fi
 curl -fsSL -o "$SKK_SETTING_DIR/$(basename "$SKK_RULES_URL")" "$SKK_RULES_URL"
 
-
-
-# Install brew packages
-brew bundle --file Brewfile
+log "Bootstrap completed"
+printf 'Open a new shell to use the activated environment.\n'
