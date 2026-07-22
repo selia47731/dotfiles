@@ -50,5 +50,4 @@ dotfiles/
 ```bash
 chmod +x bootstrap.sh
 ```
-- Homebrew will only be installed if it is not already present.
 - `macSKK` custom Kana rules will be appended to `kana-rule.conf`, not overwritten.
