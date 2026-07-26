@@ -8,6 +8,7 @@
       lua51Packages.luarocks
       deno
       nodejs
+      uv
       tree-sitter
       stylua
       selene
