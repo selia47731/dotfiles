@@ -1,3 +1,15 @@
+local function get_dictionary_paths()
+  local home = vim.env.HOME
+  return {
+    global = {
+      home .. "/.skkeleton/dict/SKK-JISYO.L",
+    },
+    user = home .. "/.skkeleton/dict/skk-jisyo.utf8",
+  }
+end
+
+local dict = get_dictionary_paths()
+
 return {
   {
     "vim-skk/skkeleton",
@@ -20,10 +32,8 @@ return {
       vim.fn['skkeleton#register_keymap']("henkan", "<Esc>", 'cancel')
 
       vim.fn['skkeleton#config']{
-        globalDictionaries = {
-          "~/Library/Containers/net.mtgto.inputmethod.macSKK/Data/Documents/Dictionaries/SKK-JISYO.L",
-        },
-        userDictionary = "~/Library/Containers/net.mtgto.inputmethod.macSKK/Data/Documents/Dictionaries/skk-jisyo.utf8",
+        globalDictionaries = dict.global,
+        userDictionary = dict.user,
         kanaTable = "azik",
         lowercaseMap = {
           ['+'] = ';',
