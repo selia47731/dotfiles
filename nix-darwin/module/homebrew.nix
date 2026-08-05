@@ -40,6 +40,7 @@
       "chatgpt"
       "deepl"
       "claude"
+      "codex"
 
       # Communication
       "discord"
