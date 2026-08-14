@@ -1,54 +1,40 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "selia's NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{
-    self,
-    nixpkgs,
-    nix-darwin,
-    home-manager,
-    nix-homebrew
-  }:
-    let
-      pc = {
-        mac = {
-          hostPlatform = "aarch64-darwin";
-          user = "selia";
-          hostname = "selia";
-        };
-      };
-    in {
-      darwinConfigurations = {
-        # $ darwin-rebuild build --flake .#selia
-        "${pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
-          specialArgs = {
-          inherit self;
-          inherit (pc.mac) user hostPlatform;
-          };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
 
-          modules = [
-            ./nix-darwin
+        modules = [
+          ./configuration.nix
 
-            home-manager.darwinModules.home-manager
-            nix-homebrew.darwinModules.nix-homebrew
+          home-manager.nixosModules.home-manager
 
-          ];
-        };
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+
+              users.selia = import ./home.nix;
+            };
+          }
+        ];
       };
     };
 }

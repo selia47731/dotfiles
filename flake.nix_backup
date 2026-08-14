@@ -1,0 +1,54 @@
+{
+  description = "dotfiles flake";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = inputs@{
+    self,
+    nixpkgs,
+    nix-darwin,
+    home-manager,
+    nix-homebrew
+  }:
+    let
+      pc = {
+        mac = {
+          hostPlatform = "aarch64-darwin";
+          user = "selia";
+          hostname = "selia";
+        };
+      };
+    in {
+      darwinConfigurations = {
+        # $ darwin-rebuild build --flake .#selia
+        "${pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
+          specialArgs = {
+          inherit self;
+          inherit (pc.mac) user hostPlatform;
+          };
+
+          modules = [
+            ./nix-darwin
+
+            home-manager.darwinModules.home-manager
+            nix-homebrew.darwinModules.nix-homebrew
+
+          ];
+        };
+      };
+    };
+}

@@ -10,14 +10,13 @@ config.initial_rows = 60
 
 
 config.font = wezterm.font_with_fallback({
-  "Hack Nerd Font Mono",
   "HackGen",
 })
 config.font_size = 16
 config.use_ime = false
 
 config.window_background_opacity = 0.85
-config.macos_window_background_blur = 20
+config.macos_window_background_blur = 1
 
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
