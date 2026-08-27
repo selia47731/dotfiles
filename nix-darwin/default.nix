@@ -2,6 +2,7 @@
   self,
   user,
   hostPlatform,
+  homeDirectory,
   ...
 }:
 {
