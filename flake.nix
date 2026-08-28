@@ -42,7 +42,7 @@
         };
       };
     in {
-      darwinConfigurations.${hosts.mac.hostname} = {
+      darwinConfigurations.${hosts.mac.hostname} =
         nix-darwin.lib.darwinSystem {
           specialArgs = {
           inherit self;
@@ -57,7 +57,6 @@
 
           ];
         };
-      };
 
       nixosConfigurations.${hosts.nixos-arm64.hostname} =
       nixpkgs.lib.nixosSystem {
