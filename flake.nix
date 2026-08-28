@@ -1,5 +1,5 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "selia's dotfiles flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -22,23 +22,31 @@
     nixpkgs,
     nix-darwin,
     home-manager,
-    nix-homebrew
+    nix-homebrew,
+    ...
   }:
     let
-      pc = {
+      hosts = {
         mac = {
           hostPlatform = "aarch64-darwin";
           user = "selia";
           hostname = "selia";
+          homeDirectory = "/Users/selia";
+        };
+
+        nixos-arm64 = {
+          system = "aarch64-linux";
+          user = "selia";
+          hostname = "nixos";
+          homeDirectory = "/home/selia";
         };
       };
     in {
-      darwinConfigurations = {
-        # $ darwin-rebuild build --flake .#selia
-        "${pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.${hosts.mac.hostname} = {
+        nix-darwin.lib.darwinSystem {
           specialArgs = {
           inherit self;
-          inherit (pc.mac) user hostPlatform;
+          inherit (hosts.mac) user hostPlatform homeDirectory;
           };
 
           modules = [
@@ -49,6 +57,38 @@
 
           ];
         };
+      };
+
+      nixosConfigurations.${hosts.nixos-arm64.hostname} =
+      nixpkgs.lib.nixosSystem {
+        system = hosts.nixos-arm64.system;
+
+        specialArgs = {
+          inherit self;
+          inherit (hosts.nixos-arm64) user system homeDirectory;
+          hostPlatform = hosts.nixos-arm64.system;
+        };
+
+        modules = [
+          ./nixos/arm64/configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+
+              extraSpecialArgs = {
+                inherit self inputs;
+                inherit (hosts.nixos-arm64) user hostname homeDirectory;
+                hostPlatform = hosts.nixos-arm64.system;
+              };
+
+              users.${hosts.nixos-arm64.user} =
+                import ./home-manager/home.nix;
+            };
+          }
+        ];
       };
     };
 }

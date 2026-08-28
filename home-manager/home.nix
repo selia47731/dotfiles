@@ -1,10 +1,10 @@
-{ user, pkgs, ... }:
+{ user, homeDirectory, pkgs, ... }:
 
 {
   home.stateVersion = "25.11";
 
   home.username = user;
-  home.homeDirectory = "/Users/${user}";
+  home.homeDirectory = homeDirectory;
 
   programs.home-manager.enable = true;
 
