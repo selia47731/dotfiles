@@ -43,7 +43,7 @@
       };
     in {
       darwinConfigurations.${hosts.mac.hostname} = {
-        nix-darwin.lib.darwinSystem = {
+        nix-darwin.lib.darwinSystem {
           specialArgs = {
           inherit self;
           inherit (hosts.mac) user hostPlatform homeDirectory;
