@@ -1,4 +1,4 @@
-{ user, ... }:
+{ user, homeDirectory, ... }:
 
 {
   home-manager = {
@@ -6,7 +6,7 @@
     useUserPackages = true;
 
     extraSpecialArgs = {
-    inherit user;
+    inherit user homeDirectory;
     };
 
     users.selia = import ../../home-manager/home.nix;
