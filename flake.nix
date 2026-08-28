@@ -70,7 +70,7 @@
         };
 
         modules = [
-          ./nixos
+          ./nixos/arm64/configuration.nix
 
           home-manager.nixosModules.home-manager
           {
