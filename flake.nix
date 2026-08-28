@@ -80,7 +80,7 @@
 
               extraSpecialArgs = {
                 inherit self inputs;
-                inherit (hosts.nixos-arm64) user hostname;
+                inherit (hosts.nixos-arm64) user hostname homeDirectory;
                 hostPlatform = hosts.nixos-arm64.system;
               };
 
