@@ -60,7 +60,7 @@
       };
 
       nixosConfigurations.${hosts.nixos-arm64.hostname} =
-      nixpkgs.lib.nlib.nixosSystem = {
+      nixpkgs.lib.nixosSystem = {
         system = hosts.nixos-arm64.system;
 
         specialArgs = {
