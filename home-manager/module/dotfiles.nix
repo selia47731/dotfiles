@@ -24,5 +24,10 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/zsh/zsh";
       recursive = true;
     };
+
+    "hypr" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/hypr";
+      recursive = true;
+    };
   };
 }
