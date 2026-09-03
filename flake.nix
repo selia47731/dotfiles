@@ -59,35 +59,35 @@
         };
 
       nixosConfigurations.${hosts.nixos-arm64.hostname} =
-      nixpkgs.lib.nixosSystem {
-        system = hosts.nixos-arm64.system;
+        nixpkgs.lib.nixosSystem {
+          system = hosts.nixos-arm64.system;
 
-        specialArgs = {
-          inherit self;
-          inherit (hosts.nixos-arm64) user system homeDirectory;
-          hostPlatform = hosts.nixos-arm64.system;
-        };
+          specialArgs = {
+            inherit self;
+            inherit (hosts.nixos-arm64) user system homeDirectory;
+            hostPlatform = hosts.nixos-arm64.system;
+          };
 
-        modules = [
-          ./nixos/arm64/configuration.nix
+          modules = [
+            ./nixos/arm64/configuration.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
 
-              extraSpecialArgs = {
-                inherit self inputs;
-                inherit (hosts.nixos-arm64) user hostname homeDirectory;
-                hostPlatform = hosts.nixos-arm64.system;
+                extraSpecialArgs = {
+                  inherit self inputs;
+                  inherit (hosts.nixos-arm64) user hostname homeDirectory;
+                  hostPlatform = hosts.nixos-arm64.system;
+                };
+
+                users.${hosts.nixos-arm64.user} =
+                  import ./home-manager/home.nix;
               };
-
-              users.${hosts.nixos-arm64.user} =
-                import ./home-manager/home.nix;
-            };
-          }
-        ];
-      };
+            }
+          ];
+        };
     };
 }
