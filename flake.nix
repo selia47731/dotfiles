@@ -37,7 +37,7 @@
         nixos-arm64 = {
           system = "aarch64-linux";
           user = "selia";
-          hostname = "nixos";
+          hostname = "nixos-arm64";
           homeDirectory = "/home/selia";
         };
       };
