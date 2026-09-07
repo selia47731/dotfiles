@@ -12,5 +12,7 @@
       hyprpaper
       hyprpolkitagent
       waybar
+
+    hackgen-font
   ];
 }
