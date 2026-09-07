@@ -81,6 +81,7 @@
       nkf
       ripgrep
       zinit
+      unzip
     ];
 
     sessionPath = [
