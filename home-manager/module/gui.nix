@@ -7,12 +7,14 @@
   ++ lib.optionals pkgs.stdenv.isLinux [
     vivaldi
 
-    hypridle
-      hyprlock
-      hyprpaper
-      hyprpolkitagent
-      waybar
+    hyprlock
+    hyprpaper
+    hyprpolkitagent
+    waybar
 
     hackgen-font
   ];
+
+  services.hypridle.enable = true;
+
 }
