@@ -82,6 +82,7 @@
       ripgrep
       zinit
       unzip
+      wget
     ];
 
     sessionPath = [
