@@ -40,6 +40,13 @@
           hostname = "nixos-arm64";
           homeDirectory = "/home/selia";
         };
+
+	nixos-x86-64 = {
+	  system = "x86_64-linux";
+	  user = "selia";
+	  hostname = "nixos";
+	  homeDirectory = "/home/selia";
+	};
       };
     in {
       darwinConfigurations.${hosts.mac.hostname} =
@@ -84,6 +91,38 @@
                 };
 
                 users.${hosts.nixos-arm64.user} =
+                  import ./home-manager/home.nix;
+              };
+            }
+          ];
+        };
+
+      nixosConfigurations.${hosts.nixos-x86-64.hostname} =
+        nixpkgs.lib.nixosSystem {
+          system = hosts.nixos-x86-64.system;
+
+          specialArgs = {
+            inherit self;
+            inherit (hosts.nixos-x86-64) user system homeDirectory;
+            hostPlatform = hosts.nixos-x86-64.system;
+          };
+
+          modules = [
+            ./nixos/x86-64/configuration.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+
+                extraSpecialArgs = {
+                  inherit self inputs;
+                  inherit (hosts.nixos-x86-64) user hostname homeDirectory;
+                  hostPlatform = hosts.nixos-x86-64.system;
+                };
+
+                users.${hosts.nixos-x86-64.user} =
                   import ./home-manager/home.nix;
               };
             }
