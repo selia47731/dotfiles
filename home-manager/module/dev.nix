@@ -16,19 +16,6 @@
       automake
       boost
     ];
-
-    file = {
-      ".luarocks/config-5.1.lua".text = ''
-        lua_version = "5.1"
-
-        arch = "macosx-aarch64"
-        processor = "aarch64"
-        target_cpu = "aarch64"
-      '';
-
-      ".luarocks/default-lua-version.lua".text = ''
-        return "5.1"
-      '';
     };
   };
 }
