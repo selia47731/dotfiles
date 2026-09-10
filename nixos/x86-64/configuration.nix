@@ -54,6 +54,23 @@
   # Niri
   programs.niri.enable = true;
 
+  # nix-ld
+  programs.nix-ld = {
+    enable = true;
+
+    libraries = with pkgs; [
+      stdenv.cc.cc
+      zlib
+      openssl
+      libffi
+      bzip2
+      xz
+      ncurses
+      readline
+      sqlite
+    ];
+  };
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -78,6 +95,7 @@
     isNormalUser = true;
     description = "selia";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
     ];
