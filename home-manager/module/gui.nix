@@ -8,7 +8,6 @@
     vivaldi
 
     hyprlock
-    hyprpaper
     hyprpolkitagent
     waybar
 
@@ -16,5 +15,6 @@
   ];
 
   services.hypridle.enable = true;
+  services.hyprpaper.enable = true;
 
 }
