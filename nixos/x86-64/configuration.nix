@@ -90,6 +90,9 @@
     pulse.enable = true;
   };
 
+  # Eanble zsh
+  programs.zsh.enable = true;
+
   # User
   users.users."selia" = {
     isNormalUser = true;
