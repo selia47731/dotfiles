@@ -52,6 +52,23 @@
   # Niri
   programs.niri.enable = true;
 
+  # nix-ld
+  programs.nix-ld = {
+    enable = true;
+
+    libraries = with pkgs; [
+      stdenv.cc.cc
+      zlib
+      openssl
+      libffi
+      bzip2
+      xz
+      ncurses
+      readline
+      sqlite
+    ];
+  };
+
   # XWayland applications
   services.xserver.xkb = {
     layout = "jp";
@@ -85,6 +102,9 @@
     pulse.enable = true;
   };
 
+  # Eanble zsh
+  programs.zsh.enable = true;
+
   # User
   users.users.selia = {
     isNormalUser = true;
@@ -94,6 +114,7 @@
       "networkmanager"
       "wheel"
     ];
+    shell = pkgs.zsh;
   };
 
   # Firefox is unnecessary because Vivaldi is used.
