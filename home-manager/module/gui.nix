@@ -9,12 +9,12 @@
 
     hyprlock
     hyprpolkitagent
+    hyprpaper
     waybar
 
     hackgen-font
   ];
 
   services.hypridle.enable = true;
-  services.hyprpaper.enable = true;
 
 }
