@@ -68,6 +68,10 @@
       ncurses
       readline
       sqlite
+
+      libxcb
+      libGL
+      glib
     ];
   };
 
