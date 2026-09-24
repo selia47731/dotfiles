@@ -1,0 +1,174 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            options "ctrl:nocaps"
+        }
+    }
+
+    touchpad {
+        natural-scroll
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Startup
+// -----------------------------------------------------------------------------
+
+spawn-at-startup "waybar"
+spawn-at-startup "hyprpolkitagent"
+spawn-sh-at-startup "swaybg -m fill -i ~/Pictures/wallpaper.jpeg"
+
+// -----------------------------------------------------------------------------
+// Layout
+// -----------------------------------------------------------------------------
+
+layout {
+    gaps 10
+
+    center-focused-column "never"
+
+    default-column-width {
+        proportion 0.5
+    }
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    focus-ring {
+        width 2
+    }
+
+    border {
+        off
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Environment
+// -----------------------------------------------------------------------------
+
+environment {
+    "NIXOS_OZONE_WL" "1"
+}
+
+// -----------------------------------------------------------------------------
+// Key bindings
+// -----------------------------------------------------------------------------
+
+binds {
+    // Applications
+    Mod+Return { spawn "wezterm"; }
+    Mod+B      { spawn "vivaldi"; }
+
+    // Window
+    Mod+Q { close-window; }
+
+    // Hyprland の SUPER+F 相当
+    Mod+F { fullscreen-window; }
+
+    // Floating
+    Mod+Space { toggle-window-floating; }
+
+    // -------------------------------------------------------------------------
+    // Focus
+    //
+    // -------------------------------------------------------------------------
+
+    Mod+H { focus-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+
+    // Window movement
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Shift+J { move-window-down; }
+    Mod+Shift+K { move-window-up; }
+
+    // -------------------------------------------------------------------------
+    // Column management
+    // -------------------------------------------------------------------------
+
+    // 1/3 -&gt; 1/2 -&gt; 2/3 -&gt; full width
+    Mod+R { switch-preset-column-width; }
+
+    // 現在のwindowを左/右のcolumnへ取り込む・切り離す
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // Column内のwindowを1つにまとめて表示
+    Mod+C { toggle-column-tabbed-display; }
+
+    // -------------------------------------------------------------------------
+    // Workspaces
+    // -------------------------------------------------------------------------
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // Workspace上下移動
+    Mod+Page_Up   { focus-workspace-up; }
+    Mod+Page_Down { focus-workspace-down; }
+
+    // -------------------------------------------------------------------------
+    // Misc
+    // -------------------------------------------------------------------------
+
+    // ロック
+    Mod+Ctrl+L { spawn "loginctl" "lock-session"; }
+
+    // niri終了
+    Mod+M { quit; }
+
+    // Screenshot
+    Print { screenshot; }
+    Mod+Print { screenshot-window; }
+
+    // Overview
+    Mod+Tab { toggle-overview; }
+
+    // Waybar等で利用
+    Mod+Shift+Slash { show-hotkey-overlay; }
+}
+
+// -------------------------------------------------------------------------
+// Blur
+// -------------------------------------------------------------------------
+blur {
+    passes 2
+    offset 1
+    noise 0.02
+    saturation 1.0
+}
+
+window-rule {
+    match app-id="^org.wezfurlong.wezterm$"
+
+    draw-border-with-background false
+    background-effect {
+        blur true
+        xray false
+    }
+}

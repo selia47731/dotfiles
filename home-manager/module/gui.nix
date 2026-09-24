@@ -12,6 +12,8 @@
     hyprpaper
     waybar
 
+    swaybg
+
     hackgen-font
   ];
 

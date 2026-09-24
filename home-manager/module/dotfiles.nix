@@ -29,5 +29,10 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/hypr";
       recursive = true;
     };
+
+    "niri" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/niri";
+      recursive = true;
+    };
   };
 }
