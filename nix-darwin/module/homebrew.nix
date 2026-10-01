@@ -14,11 +14,13 @@
   homebrew = {
     enable = true;
 
-    global.autoUpdate = false;
 
     onActivation = {
       cleanup = "uninstall";
+      autoUpdate = true;
+      upgrade = true;
     };
+
 
     brews = [
       "borders"
@@ -35,6 +37,7 @@
       "linearmouse"
       "qfinder-pro"
       "keycastr"
+      "omniwm"
 
       # Tools
       "chatgpt"
