@@ -23,7 +23,6 @@
 
 
     brews = [
-      "borders"
       "mlx"
       "mlx-c"
       "ollama"
@@ -73,10 +72,6 @@
     ];
 
     taps = [
-      {
-        name = "felixkratz/formulae";
-        trusted = true;
-      }
     ];
   };
 }
