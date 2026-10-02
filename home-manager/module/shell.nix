@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs = {
@@ -95,7 +95,8 @@
     sessionVariables = {
       MANPAGER = "nvim +Man!";
       CLICOLOR = "1";
-      PUPPETEER_EXECUTABLE_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"; # MacOSでのみ利用可能(後で分離
+    } // lib.optionalAttrs (pkgs.stdenv.isDarwin) {
+      PUPPETEER_EXECUTABLE_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
     };
   };
 }
