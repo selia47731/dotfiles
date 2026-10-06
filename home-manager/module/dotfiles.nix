@@ -34,5 +34,10 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/niri";
       recursive = true;
     };
+
+    "omniwm" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/omniwm";
+      recursive = true;
+    };
   };
 }
