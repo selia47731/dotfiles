@@ -6,6 +6,7 @@
   ]
   ++ lib.optionals pkgs.stdenv.isLinux [
     vivaldi
+    chromium
 
     hyprlock
     hyprpolkitagent
