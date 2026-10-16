@@ -83,6 +83,9 @@
       zinit
       unzip
       wget
+    ]
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
+      glpk
     ];
 
     sessionPath = [
@@ -95,7 +98,7 @@
     sessionVariables = {
       MANPAGER = "nvim +Man!";
       CLICOLOR = "1";
-    } // lib.optionalAttrs (pkgs.stdenv.isDarwin) {
+    } // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
       PUPPETEER_EXECUTABLE_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
     };
   };

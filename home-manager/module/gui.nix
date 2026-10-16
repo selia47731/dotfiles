@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     wezterm
   ]
-  ++ lib.optionals pkgs.stdenv.isLinux [
+  ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     vivaldi
     chromium
 
