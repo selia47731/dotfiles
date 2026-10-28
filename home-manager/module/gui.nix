@@ -7,6 +7,7 @@
   ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     vivaldi
     chromium
+    google-chrome
 
     hyprlock
     hyprpolkitagent
