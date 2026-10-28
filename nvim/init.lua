@@ -79,7 +79,7 @@ if vim.g.started_by_firenvim == true then
   vim.opt.signcolumn = 'no'
   vim.opt.laststatus = 0
   vim.opt.cursorline = false
-  vim.opt.fillchar:append({eob = " "})
+  vim.opt.fillchars:append({eob = " "})
   vim.cmd("colorscheme cyberdream")
 end
 
