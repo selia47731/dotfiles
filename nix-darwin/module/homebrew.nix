@@ -43,6 +43,7 @@
       "deepl"
       "claude"
       "codex"
+      "nessus"
 
       # Communication
       "discord"

@@ -15,6 +15,9 @@
       shellcheck
       automake
       boost
+    ]
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
+      nmap
     ];
   };
 }
