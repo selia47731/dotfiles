@@ -28,6 +28,7 @@ return {
       vim.fn['skkeleton#register_keymap']("input", "\\", 'katakana')
       vim.fn['skkeleton#register_keymap']("input", "/", 'abbrev')
       vim.fn['skkeleton#register_keymap']("input", ";", 'henkanPoint')
+      vim.fn['skkeleton#register_keymap']("input", "<C-l>", 'zenkaku')
       vim.fn['skkeleton#register_keymap']("henkan", "<Space>", 'henkanForward')
       vim.fn['skkeleton#register_keymap']("henkan", "<Esc>", 'cancel')
 
