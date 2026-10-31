@@ -47,16 +47,27 @@
       '';
     };
 
+    fish = {
+      enable = true;
+
+      interactiveShellInit = ''
+        set fish_greeting
+      '';
+
+    };
+
     bat.enable = true;
 
     eza = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
     };
 
     fzf = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
     };
 
     tmux = {
