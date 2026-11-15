@@ -15,6 +15,11 @@ in
       recursive = true;
     };
 
+    "kitty" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/kitty";
+      recursive = true;
+    };
+
     "zeno" = {
       source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/zsh/zeno";
       recursive = true;

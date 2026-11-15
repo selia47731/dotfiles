@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     wezterm
+    kitty
   ]
   ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     vivaldi
