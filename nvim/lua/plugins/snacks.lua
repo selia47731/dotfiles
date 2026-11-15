@@ -2,6 +2,9 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  dependencies = {
+    "delphinus/md-render.nvim",
+  },
 
   ---@type snacks.Config
   opts = {
@@ -64,6 +67,9 @@ return {
           cmd = "rg",
           regex = true
         }
+      },
+      preview = {
+        preview = require("md-render.snacks").preview(),
       }
     },
     bigfile = { enabled = true },
@@ -72,7 +78,11 @@ return {
     lazygit = {
       enabled = true,
       configure = true,
-    }
+    },
+    image = {
+      enabled = true,
+      configure = true,
+    },
   },
   config = function(_, opts)
     require("snacks").setup(opts)
