@@ -1,0 +1,9 @@
+
+[profiles]
+
+[profiles.default]
+center = []
+leading = ["apple-menu", "omniwm", "workspaces"]
+scheme = "content"
+theme = "tokyo-night"
+trailing = ["media", "notifications", "bluetooth", "volume", "battery-details", "input-source", "control-center", "wifi", "system-stats", "clock"]
