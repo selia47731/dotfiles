@@ -65,9 +65,7 @@ require("config.lazy")
 -- nvim colorscheme settings
 local term_program = vim.env.TERM_PROGRAM
 vim.opt.background = "dark"
-if term_program == "WezTerm" then
-  vim.cmd("colorscheme cyberdream")
-end
+vim.cmd("colorscheme cyberdream")
 vim.opt.termguicolors = true
 vim.opt.winblend = 10
 vim.opt.pumblend = 7
