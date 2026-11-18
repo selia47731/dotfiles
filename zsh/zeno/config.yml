@@ -34,6 +34,10 @@ snippets:
     keyword: "sz"
     snippet: "source ~/.zshrc"
 
+  - name: "date"
+    keyword: "date"
+    snippet: "LANG=C date '+%a %b %e %T %Z %Y'"
+
   - name: "tree"
     keyword: "tree"
     snippet: "eza --tree"
