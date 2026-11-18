@@ -30,7 +30,6 @@
 
     casks = [
       # Utility
-      "appcleaner"
       "blackhole-16ch"
       "blackhole-2ch"
       "linearmouse"
@@ -39,18 +38,18 @@
       "omniwm"
 
       # Tools
-      "chatgpt"
       "deepl"
-      "claude"
-      "codex"
       "nessus"
 
       # Communication
       "discord"
       "slack"
       "mattermost"
-      "microsoft-teams"
       "zoom"
+
+      # Microsoft
+      "microsoft-teams"
+      "microsoft-powerpoint"
 
       # Fonts
       "font-hack-nerd-font"
