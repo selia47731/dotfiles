@@ -23,6 +23,7 @@
 
 
     brews = [
+      "ghostscript"
       "mlx"
       "mlx-c"
       "ollama"
