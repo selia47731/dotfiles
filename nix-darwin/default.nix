@@ -11,5 +11,6 @@
     ./module/homebrew.nix
     ./module/home-manager.nix
     ./module/nixpkgs.nix
+    ./module/system.nix
   ];
 }
