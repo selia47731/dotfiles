@@ -10,6 +10,7 @@
       nodejs
       uv
       tree-sitter
+      markitdown-mcp
       stylua
       selene
       shellcheck
